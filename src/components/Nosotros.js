@@ -69,7 +69,7 @@ function Nosotros() {
                             <img className="numero_uno_nosotros" src={numero_uno_nosotros}></img>
                             <div className="numero_uno_nosotros_div">En "El Jardín de Naru", nos comprometemos a ofrecerte plantas y productos de la más alta calidad. Cada elemento seleccionado es cuidadosamente escogido para asegurar su salud y vitalidad, brindándote un toque único de naturaleza que transformará tu espacio.</div>
                         </div>
-                        <div className="primera_seccion">
+                        <div className="primera_seccion parte2_compromiso">
                             <div className="numero_uno_nosotros_div">Nos enorgullece ser defensores del medio ambiente. Comprometidos con prácticas sostenibles, trabajamos activamente para minimizar nuestro impacto en la naturaleza. Desde nuestros empaques hasta las variedades de plantas que ofrecemos, cada decisión está guiada por la responsabilidad ambiental.</div>
                             <img className="numero_uno_nosotros" src={numero_dos_nosotros}></img>
                         </div>
@@ -77,7 +77,7 @@ function Nosotros() {
                             <img className="numero_uno_nosotros" src={numero_tres_nosotros}></img>
                             <div className="numero_uno_nosotros_div">Entendemos que cada cliente es único. Nos comprometemos a brindarte una experiencia personalizada desde el momento en que exploras nuestro catálogo hasta la entrega de tu selección. Nuestro equipo está aquí para ayudarte a encontrar las plantas perfectas que se adapten a tus necesidades y estilo de vida.</div>
                         </div>
-                        <div className="primera_seccion">
+                        <div className="primera_seccion parte2_compromiso">
                             <div className="numero_uno_nosotros_div">En "El Jardín de Naru", no solo vendemos plantas; también buscamos cultivar el conocimiento. Nos comprometemos a proporcionar recursos educativos que te ayudarán a cuidar y disfrutar de tus plantas. Desde consejos de cuidado hasta inspiración para la decoración, queremos ser tu fuente confiable en el fascinante mundo botánico.</div>
                             <img className="numero_uno_nosotros" src={numero_cuatro_nosotros}></img>
                         </div>

@@ -12,8 +12,8 @@
     width: 100%;
     background-color: #fff;
     margin-top: 15px;
-    position: fixed;
-    z-index: 10000;
+    position: static;
+    /* z-index: 10000; */
     top:50px;
     height: auto;
     display: flex;
@@ -309,10 +309,10 @@
 
 /* Estilos del navbar */
 
-.navbar {
+.navbar_div_blanco {
     background-color: #ffffff;
     padding: 15px 0;
-    margin-top: 280px;
+    margin-top: 80px;
   }
   
   .img_logo {
@@ -342,4 +342,162 @@
     padding-bottom: 5px;
     border-bottom: 1px solid #1D5B27;
   }
+
+  .responsive_content_nums{
+    display: none;
+  }
+  /* Responsive Navbar  */
+
+  @media (max-width: 1150px) {
+    /* Nuevo Contenedor bloque de div verde del inicio  */
+    .responsive_content_nums{
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+    }
+
+    /* Contenedor de los telefono y ubicacion  */
+
+    .responsive_content_nums_div{
+      display: flex;
+    }
+    
+    /* Contenedor Telefono  */
+    .responsive_content_num{
+      display: flex;
+      height: 100%;
+      align-items: center;
+      margin-left: 8px;
+    }
+    
+    .responsive_content_num img {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .responsive_content_num div {
+      margin-left: 10px;
+      color: #fff;
+    }
+    /* Contenedor Direccion  */
+
+    .responsive_content_num_tres{
+      display: flex;
+      height: 100%;
+      align-items: center;
+      margin-left: 8px;
+
+    }
+
+    .responsive_content_num_tres img {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .responsive_content_num_tres div {
+      margin-left: 10px;
+      color: #fff;
+    }
+
+    /* Contenedor |  */
+
+    .responsive_content_num_dos div {
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      margin-left: 0px;
+      margin-right: 5px;
+      color: #fff;
+    }
+
+    /* Eliminare telefono y direccion del div verde no responsivo por el momento  */
+    .content_num, .content_num_dos, .content_num_tres{
+      display: none;
+    }
+
+    /* Subir el navbar a  la altura ideal  */
+    .navbar_div_blanco {
+      background-color: #ffffff;
+      padding: 15px 0;
+      margin-top: 180px;
+    }
+    
+  }
+
+  @media (max-width: 1050px){
+    .navbar-items{
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 860px) {
+
+    /* Eliminare telefono y direccion del div verde no responsivo por el momento  */
+    .call_to_action, .ul_normal_inicio_completo{
+      display: none;
+    }
+
+    /* Exponderos los componentes a las esquinas para mejorar el campo de vision  */
+
+
+    .responsive_siete_ochenta_navbar{
+      height: 70px !important;
+    }
+
+    /* Contenedor imagen de home  */
+    .content_logo_navbar {
+      width: 100%;
+      background-color: #fff;
+      margin-top: 15px;
+      position: fixed;
+      z-index: 10;
+      top:55px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 30px;
+      /* border-bottom: 1px solid #1D5B27; */
+    }
+
+
+    .nav-link {
+       padding-top: 20px !important;
+       font-family: a !important;
+       font-size: 24px !important;
+       font-weight: 500 !important;
+    }
+
+    .active_link_this{
+      color: #1D5B27 !important;
+    }
+
+    .content_num_cuatro_responsive_siete_ochenta{
+      display: flex;
+      height: 50% !important;
+      align-items: end;
+    }
+
+    .contenedor_ul_siete_ochenta{
+      height: 50% !important;
+    }
+
+    .btn_flores_log{
+      margin-bottom: 20px !important;
+    }
+
+    .navbar_div_blanco {
+      background-color: #ffffff;
+      padding: 15px 0;
+      margin-top: 140px;
+  }
+
+  .offcanvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: end !important;
+  }
+    
+  }
+
   

@@ -1,0 +1,293 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './../css/ComprarPlantas.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import ic_cuadricula from './../imgs/ic_cuadricula.png'
+import ic_menu_lateral from './../imgs/ic_menu_lateral.png'
+import ic_ojo from './../imgs/ic_ojo.png'
+import ic_carrito_compras from './../imgs/ic_carrito_compras.png'
+import planta_compromiso from './../imgs/planta_img6.jpeg'
+import Navbar from './NavBar';
+import Fotter from './Fotter';
+
+
+function MyVerticallyCenteredModal(props) {
+
+    if (!props.planta) {
+        return null; // O puedes manejar este caso de otra manera según tus necesidades
+    }
+
+    return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            className="darle_radio_modal"
+        >
+            <Modal.Header className="header_modal_ojo_planta" closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    <div className="titulo_modal_ojo_planta">{props.planta.nombre}</div>
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div className="modal-content contenedor_img_desc_modal">
+                    <div className="modal-img-container">
+                        <img
+                            src={`${process.env.PUBLIC_URL}/${props.planta.imgplanta}`}
+                            alt={props.planta.nombre}
+                            className="modal-img"
+                        />
+                    </div>
+                    <div className="modal-description">
+                        <h4>Descripción</h4>
+                        <p>
+                            {props.planta.descripcion}
+                        </p>
+                        <h4>Precio</h4>
+                        <p>
+                            S/. {props.planta.precio}
+                        </p>
+                        <h4>Stock</h4>
+                        <p>
+                            {props.planta.stock}
+                        </p>
+                        <h4>Categoria</h4>
+                        <p className="categoria_p">
+                            {props.planta.categoria}
+                        </p>
+                    </div>
+                </div>
+            </Modal.Body>
+            <Modal.Footer className="fotter_ojo_planta">
+                <Button className="btn_close_modal_ojo" onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+
+    );
+}
+
+function ComprarPlantas() {
+
+    const [minVal, setMinVal] = useState(0);
+    const [maxVal, setMaxVal] = useState(500);
+    const priceGap = 1;
+
+    const rangeInputMin = useRef();
+    const rangeInputMax = useRef();
+    const range = useRef();
+
+    const [modalShow, setModalShow] = React.useState(false);
+
+    const [plantas, setPlantas] = useState([]);
+    const [selectedPlanta, setSelectedPlanta] = useState(null);
+
+    useEffect(() => {
+        // Aquí deberías tener una función que obtiene los datos de la API
+        // Puedes ajustar la URL según la estructura de tu API
+        const fetchPlantasData = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/plantas/');
+                const data = await response.json();
+                setPlantas(data);
+            } catch (error) {
+                console.error('Error fetching plantas:', error);
+            }
+        };
+
+        fetchPlantasData();
+    }, []);
+
+
+
+    useEffect(() => {
+        range.current.style.left = ((minVal / rangeInputMin.current.max) * 100) + "%";
+        range.current.style.right = 100 - ((maxVal / rangeInputMax.current.max) * 100) + "%";
+
+
+    }, [minVal, maxVal]);
+
+    const handleMinChange = (e) => {
+        let val = parseInt(e.target.value);
+        if ((maxVal - val) < priceGap) {
+            val = maxVal - priceGap;
+        }
+        setMinVal(val);
+    };
+
+    const handleMaxChange = (e) => {
+        let val = parseInt(e.target.value);
+        if ((val - minVal) < priceGap) {
+            val = minVal + priceGap;
+        }
+        setMaxVal(val);
+    };
+
+
+    const handlePlantaClick = (planta) => {
+        setSelectedPlanta(planta);
+        setModalShow(true);
+    };
+
+    return (
+        <div className="contenedor_compra_plantas">
+            <div className="contenedor_tag_navbar">
+                <Navbar></Navbar>
+            </div>
+            <div className="contenedor_filtros_secciones">
+                <div className="contenedor_titulo_filtros">
+                    <div className="contenedor_titulo_filtros_content">
+                        <div className="titulo_filtros">Filtrar</div>
+                        <div className="contenedor_filtros">
+                            <div className="contenedor_filtros_precio">
+                                <div className="contenedor_filtros_precio_titulo">Precio</div>
+                                <p className="contenedor_filtros_precio_subtitulo">Usa el range o digite el min y max precio</p>
+                                <div class="price-input">
+                                    <div class="field">
+                                        <span>Min S/.</span>
+                                        <input type="number" class="input-min" value={minVal} onChange={handleMinChange} />
+                                    </div>
+                                    <div class="separator">-</div>
+                                    <div class="field">
+                                        <span>Max S/.</span>
+                                        <input type="number" class="input-max" value={maxVal} onChange={handleMaxChange} />
+                                    </div>
+                                </div>
+                                <div class="slider">
+                                    <div class="progress" ref={range}></div>
+                                </div>
+                                <div class="range-input">
+                                    <input type="range" class="range-min" min="0" max="500" value={minVal} step="1" onChange={handleMinChange} ref={rangeInputMin} />
+                                    <input type="range" class="range-max" min="0" max="500" value={maxVal} step="1" onChange={handleMaxChange} ref={rangeInputMax} />
+                                </div>
+
+
+                            </div>
+
+                            <div className="hr_personal"></div>
+
+                            <div className="contenedor_filtros_tipos_plantas">
+                                <div className="contenedor_filtros_tipos_plantas_titulo">Tipos plantas</div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Echeveria</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Cactus de San Pedro</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Serpiente de la Madre</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Cactus Bola de Nieve</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Aloe Vera</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Crasas Haworthia</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Cactus Orejas de Conejo</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Rosa del Desierto</div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Cactus Barril </div>
+                                </div>
+                                <div className="contenedor_filtros_tipos_plantas_tipos">
+                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                    <div className="nombre_tipo_planta">Cactus de Navidad</div>
+                                </div>
+                            </div>
+
+                            <div className="hr_personal"></div>
+
+                            <div className="contenedor_filtros_borrar">
+                                <div className="contenedor_filtros_borrar_seccion">Borrar Filtros</div>
+                                <button class="btn_borrar_filtros">
+                                    <span class="shadow"></span>
+                                    <span class="edge"></span>
+                                    <span class="front text"> X
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="contenedor_secciones">
+                    <div className="contenedor_head_plantas_secciones">
+                        <div className="content_icons_shop_plant_views">
+                            <img className="views_plants_icons" src={ic_cuadricula}></img>
+                            <img className="views_plants_icons icon2_detail_view" src={ic_menu_lateral}></img>
+                        </div>
+                        <div className="content_icons_shop_plant_filter">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle btn_buscar_por titulo_buscar_por" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Filtrar por
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Relevancia</a></li>
+                                    <li><a class="dropdown-item" href="#">Nombre de la A a la Z</a></li>
+                                    <li><a class="dropdown-item" href="#">Nombre de la Z a la A</a></li>
+                                    <li><a class="dropdown-item" href="#">Precio: de más bajo a más alto</a></li>
+                                    <li><a class="dropdown-item" href="#">Precio: de más alto a más bajo</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="contenedor_body_plantas_secciones">
+
+                        {plantas.map((planta) => (
+                            <div className="producto_planta" key={planta.id} onClick={() => handlePlantaClick(planta)}>
+                                <img className="imagen_producto" src={`${process.env.PUBLIC_URL}/${planta.imgplanta}`} alt={planta.nombre} />
+
+
+                                <div className="comprar_planta_cuadricula">
+                                    <h2>{planta.nombre}</h2>
+                                    <button className="btn_comprar_planta">Comprar</button>
+                                </div>
+                                <p>S/. {planta.precio}</p>
+                                <div className="botones_superior">
+                                    <Button className="botones_superior_btn btn_ojo_ic" variant="primary" onClick={() => handlePlantaClick(planta)}>
+                                        <img className="ic_ojo" src={ic_ojo} alt="Ver Detalles" />
+                                    </Button>
+                                    <Button className="botones_superior_btn btn_ojo_ic" variant="primary" onClick={() => handlePlantaClick(planta)}>
+                                        <img className="ic_ojo" src={ic_carrito_compras} alt="Agregar al Carrito" />
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
+
+
+                    </div>
+
+                    <MyVerticallyCenteredModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        planta={selectedPlanta}
+                    />
+
+                </div>
+            </div>
+            <Fotter />
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        </div>
+    );
+}
+
+export default ComprarPlantas;

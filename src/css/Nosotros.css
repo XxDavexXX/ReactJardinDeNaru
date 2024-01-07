@@ -10,7 +10,7 @@
 
 /* img planta esquina inferior derecha */
 
-.planta_compromiso{
+.planta_compromiso {
     width: 340px;
     position: relative;
     top: -200px;
@@ -89,7 +89,7 @@
 
 /* Contenedor de compromiso  */
 
-.contenedor_compromiso{
+.contenedor_compromiso {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -97,7 +97,7 @@
     justify-content: center;
 }
 
-.contenido_compromiso{
+.contenido_compromiso {
     position: relative;
     top: -300px;
     display: flex;
@@ -107,7 +107,7 @@
 
 /* Contenedor 4 partes  */
 
-.contenido_compromiso_cuatro_partes{
+.contenido_compromiso_cuatro_partes {
     width: 1724px;
     display: flex;
     flex-direction: column;
@@ -117,24 +117,25 @@
 
 }
 
-.titulo_compromisos{
+.titulo_compromisos {
     font-size: 36px;
     font-weight: 900;
     font-family: a;
+    text-align: center;
     color: #1D5B27;
 }
 
-.secciones_compromisos{
+.secciones_compromisos {
     width: 60%;
 }
 
-.primera_seccion{
+.primera_seccion {
     display: flex;
     width: 100%;
     margin-top: 30px;
 }
 
-.numero_uno_nosotros{
+.numero_uno_nosotros {
     width: 250px;
 }
 
@@ -145,4 +146,277 @@
     text-align: justify;
     padding: 40px;
     font-size: 18px;
+}
+
+
+/* Responsive  */
+
+@media (max-width: 1800px) {
+
+    .contenedor_info_hoja_blanca {
+        width: 70%;
+    }
+
+    .planta_nosotros {
+        height: 1500px;
+        width: 430px;
+        z-index: 1;
+        position: relative;
+        top: 470px;
+        left: -55%;
+    }
+
+    .contenedor_info_hoja_verde {
+        width: 100%;
+    }
+
+    .contenido_compromiso_cuatro_partes {
+        width: 70%;
+        margin-top: 100px;
+    }
+
+    .planta_compromiso {
+        width: 340px;
+        position: relative;
+        top: -200px;
+        left: 55%;
+    }
+
+}
+
+@media (max-width: 1550px) {
+
+    .contenedor_info_hoja_blanca {
+        width: 60%;
+    }
+
+    .contenido_compromiso_cuatro_partes {
+        width: 70%;
+        margin-top: 300px;
+    }
+
+    .planta_nosotros {
+        height: 1500px;
+        width: 400px;
+        z-index: 1;
+        position: relative;
+        top: 470px;
+        left: -55%;
+    }
+
+    .contenedor_info_hoja_verde {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 1450px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 90%;
+        margin-top: 500px;
+    }
+
+}
+
+@media (max-width: 1300px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 90%;
+        margin-top: 500px;
+    }
+
+    .planta_compromiso {
+        width: 280px;
+        position: relative;
+        top: -200px;
+        left: 55%;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 800px;
+    }
+
+    .secciones_compromisos {
+        width: 80%;
+    }
+}
+@media (max-width: 1150px) {
+
+    .contenedor_info_nosotros{
+        top: -420px;
+    }
+}
+
+@media (max-width: 1050px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 900px;
+    }
+
+    .planta_compromiso {
+        width: 200px;
+        position: relative;
+        top: -200px;
+        left: 55%;
+    }
+
+}
+
+@media (max-width: 935px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 1200px;
+    }
+    .contenedor_info_nosotros{
+        top: -220px;
+    }
+
+    .planta_nosotros {
+        height: 700px;
+        width: 300px;
+        z-index: 1;
+        position: relative;
+        top: 370px;
+        left: -55%;
+    }
+
+    .planta_compromiso {
+        width: 200px;
+        position: relative;
+        top: -200px;
+        left: 55%;
+    }
+
+    .secciones_compromisos {
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 815px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 1400px;
+    }
+
+    .planta_compromiso {
+        width: 200px;
+        position: relative;
+        top: -200px;
+        left: 55%;
+    }
+
+
+    .secciones_compromisos {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 730px) {
+
+    .primera_seccion {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .parte2_compromiso {
+        display: flex;
+        width: 100%;
+        flex-direction: column-reverse;
+        margin-top: 30px;
+        align-items: center;
+    }
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 1700px;
+    }
+
+}
+
+@media (max-width: 660px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 2100px;
+    }
+
+}
+
+@media (max-width: 565px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 2500px;
+    }
+
+    .imagen_nosotros {
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 510px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 3000px;
+    }
+
+    .imagen_nosotros {
+        width: 200px;
+    }
+
+}
+
+@media (max-width: 465px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 3700px;
+    }
+
+    .imagen_nosotros {
+        width: 200px;
+    }
+
+}
+
+@media (max-width: 439px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 4200px;
+    }
+
+    .imagen_nosotros {
+        width: 200px;
+    }
+
+}
+
+@media (max-width: 413px) {
+
+    .contenido_compromiso_cuatro_partes {
+        width: 100%;
+        margin-top: 4500px;
+    }
+
+    .imagen_nosotros {
+        width: 200px;
+    }
+
 }

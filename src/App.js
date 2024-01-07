@@ -12,6 +12,8 @@ import Fotter from './components/Fotter';
 
 import Nosotros from './components/Nosotros';
 
+import ComprarPlantas from './components/ComprarPlantas';
+
 import Home from './components/Home';
 
 import Eventos from './components/Eventos';
@@ -50,6 +52,7 @@ const App = () => {
       </div>
       <Routes>
         <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/comprar_plantas" element={<ComprarPlantas />} />
         <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
         <Route path="/eventos" element={<Eventos />} />
         <Route path="/" element={<Home />} />

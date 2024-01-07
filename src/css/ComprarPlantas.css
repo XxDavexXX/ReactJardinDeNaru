@@ -1,0 +1,581 @@
+.contenedor_filtros_secciones {
+  background-color: #d4f0d5;
+  padding: 40px 0;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/* Parte de filtros  */
+
+/* seccion de Precio  */
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display:wght@500&display=swap');
+
+.contenedor_titulo_filtros {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: 23%;
+}
+
+.contenedor_titulo_filtros_content {
+  width: 80%;
+  background-color: #fff;
+  height: 1000px;
+}
+
+.titulo_filtros {
+  background-color: #d4f0d5;
+  color: #1d6f16;
+  width: 100%;
+  padding: 10px 0 20px 0;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Playfair Display', serif;
+}
+
+.contenedor_filtros {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  background-color: #fff;
+  height: auto;
+
+}
+
+.contenedor_filtros_precio {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor_filtros_precio_titulo {
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.contenedor_filtros_precio_subtitulo {
+  font-size: 16px;
+  font-family: a;
+}
+
+.contenedor_filtros_precio_ranges {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+}
+
+
+/* parte de macetas y plantas */
+
+.contenedor_secciones {
+  width: 77%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.contenedor_head_plantas_secciones {
+  width: 90%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.content_icons_shop_plant_views {
+  width: 30%;
+
+}
+
+.content_icons_shop_plant_filter {
+  width: 70%;
+  display: flex;
+  justify-content: end;
+}
+
+.btn_buscar_por:not(:disabled) {
+  cursor: pointer;
+  background-color: #1d6f16 !important;
+}
+
+.btn_buscar_por:hover {
+  background-color: #289a1d !important;
+}
+
+.titulo_buscar_por {
+  font-size: 22px;
+  font-family: a;
+  margin-right: 10px;
+}
+
+.views_plants_icons {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+}
+
+.views_plants_icons:hover {
+  background-color: #fff;
+}
+
+.icon2_detail_view {
+  margin-left: 10px;
+}
+
+.botones_superior_btn {
+  border: none;
+  background-color: #d4f0d5;
+}
+
+.botones_superior_btn:hover {
+  background-color: #cccccc;
+}
+
+
+.ic_ojo {
+  height: 30px;
+  width: 30px;
+}
+
+
+/* Range prices  */
+
+.price-input {
+  width: 100%;
+  display: flex;
+  margin: 30px 0 35px;
+}
+
+.price-input .field {
+  display: flex;
+  width: 100%;
+  height: 45px;
+  align-items: center;
+}
+
+.field input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 19px;
+  margin-left: 12px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #999;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.price-input .separator {
+  width: 130px;
+  display: flex;
+  font-size: 19px;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  height: 5px;
+  position: relative;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.slider .progress {
+  height: 100%;
+  left: 25%;
+  right: 25%;
+  position: absolute;
+  border-radius: 5px;
+  background: #1d6f16;
+}
+
+.range-input {
+  position: relative;
+}
+
+.range-input input {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: -5px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background: #1d6f16;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 17px;
+  width: 17px;
+  border: none;
+  border-radius: 50%;
+  background: #17A2B8;
+  pointer-events: auto;
+  -moz-appearance: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+/* seccion de tipos plantas en filtros  */
+
+.contenedor_filtros_tipos_plantas {
+  margin-top: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor_filtros_tipos_plantas_titulo {
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.contenedor_filtros_tipos_plantas_tipos {
+  width: 100%;
+  padding: 10px 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+
+}
+
+.checkbox_tipo_planta {
+  padding: 5px;
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  accent-color: #1d6f16;
+}
+
+
+.nombre_tipo_planta {
+  font-size: 18px;
+  font-family: a;
+
+}
+
+/* hr personal  */
+
+.hr_personal {
+  height: 0.5px;
+  width: 100%;
+  background-color: #1d6f16;
+  margin-top: 25px;
+}
+
+/* btn para borrar los filtros  */
+
+.btn_borrar_filtros {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 20px;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%);
+}
+
+.front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.btn_borrar_filtros:hover {
+  filter: brightness(110%);
+}
+
+.btn_borrar_filtros:hover .front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.btn_borrar_filtros:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.btn_borrar_filtros:hover .shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.btn_borrar_filtros:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.btn_borrar_filtros:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* Contenido de borrar filtros seccion  */
+
+.contenedor_filtros_borrar {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.contenedor_filtros_borrar_seccion {
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+
+/* seccion de las plantas, precio y detalles  */
+
+
+.contenedor_body_plantas_secciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 350px));
+  gap: 20px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+.comprar_planta_cuadricula {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.producto_planta {
+  position: relative;
+  border: none;
+  padding: 10px;
+}
+
+.imagen_producto {
+  width: 100%;
+  height: auto;
+}
+
+.comprar_planta_cuadricula h2 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #3b6d36;
+}
+
+.producto_planta p {
+  color: #3b6d36;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.comprar_planta_cuadricula button {
+  background-color: #3b6d36;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+}
+
+.btn_comprar_planta:hover {
+  background-color: #59a851;
+  color: #ffffff;
+}
+
+.botones_superior {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.producto_planta:hover .botones_superior {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-left: 25px;
+}
+
+.producto_planta:hover .imagen_producto {
+  filter: brightness(70%);
+}
+
+.botones_superior button {
+
+  margin-top: 10px;
+}
+
+
+/* Arreglando el modal para que todo el fondo este oscuro  */
+/* 
+.contenedor_tag_navbar{
+  opacity: 0.5;
+} */
+
+/* .contendor_todos_navbars{
+  display: none;
+} */
+.btn_ojo_ic {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Modal conteneder  */
+
+.contenedor_img_desc_modal {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  border: none !important;
+}
+
+.modal-img-container {
+  width: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.modal-description {
+  height: 650px !important;
+  margin: 20px 0 !important;
+  width: 50% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.modal-description p{
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 100;
+}
+
+.modal-img-container img {
+  margin: 20px 0 !important;
+  width: 500px !important;
+  height: 650px !important;
+}
+
+@media (min-width: 992px) {
+
+  .modal-lg,
+  .modal-xl {
+    max-width: 70% !important;
+  }
+}
+
+.header_modal_ojo_planta {
+  background-color: #2d6526 !important;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+  border-bottom: 0.1px solid #1d6f16 !important;
+}
+
+.titulo_modal_ojo_planta {
+  color: #fff !important;
+  font-family: a !important;
+  font-size: 29px !important;
+  font-weight: 900 !important;
+}
+
+.modal_contenedor {
+  border-radius: 20px !important;
+}
+
+.modal-content {
+  border-radius: 20px !important;
+}
+
+.fotter_ojo_planta{
+  border-top: 0.1px solid #ccc !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  background-color: #ffffff !important;
+}
+
+.categoria_p{
+  text-align: center;
+  padding: 5px;
+  width: 150px;
+  background-color: #9ec02e;
+}
+
+.btn_close_modal_ojo{
+  background-color: #1d6f16 !important;
+}
+
+.btn_close_modal_ojo:hover{
+  background-color: #2ec05a !important;
+}
+
+.modal-header .btn-close {
+  margin-top: 1px !important;
+  height: 30px !important;
+  margin-right: 10px !important;
+  background-color: #fff !important;
+  width: 30px !important;
+}

@@ -33,8 +33,11 @@
     -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
-    text-align: ‌ center;
+    text-align: center;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .header .header-content p {
