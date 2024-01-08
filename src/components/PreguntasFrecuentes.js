@@ -26,7 +26,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> El proceso es sencillo. Explora nuestro catálogo, selecciona tus plantas y accesorios favoritos, agrégales al carrito y sigue los pasos para completar la compra de forma segura.
+                                    <strong className="strong_rpta">Respuesta: </strong> El proceso es sencillo. Explora nuestro catálogo, selecciona tus plantas y accesorios favoritos, agrégales al carrito y sigue los pasos para completar la compra de forma segura.
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Aceptamos diversas opciones de pago, incluyendo tarjetas de crédito, débito y otros métodos seguros en línea.
+                                    <strong className="strong_rpta">Respuesta: </strong> Aceptamos diversas opciones de pago, incluyendo tarjetas de crédito, débito y otros métodos seguros en línea.
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Nuestros envíos son rápidos y seguros. El tiempo de entrega depende de tu ubicación, pero trabajamos para que recibas tu pedido en el menor tiempo posible.
+                                    <strong className="strong_rpta">Respuesta: </strong> Nuestros envíos son rápidos y seguros. El tiempo de entrega depende de tu ubicación, pero trabajamos para que recibas tu pedido en el menor tiempo posible.
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong>  Sí, garantizamos la calidad de nuestras plantas. Si experimentas algún problema, contáctanos y estaremos encantados de ayudarte.
+                                    <strong className="strong_rpta">Respuesta: </strong>  Sí, garantizamos la calidad de nuestras plantas. Si experimentas algún problema, contáctanos y estaremos encantados de ayudarte.
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseFive" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Sí, ofrecemos opciones de devolución y cambio. Consulta nuestra política de devoluciones para obtener más detalles.
+                                    <strong className="strong_rpta">Respuesta: </strong> Sí, ofrecemos opciones de devolución y cambio. Consulta nuestra política de devoluciones para obtener más detalles.
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseSix" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Proporcionamos información detallada sobre el cuidado de cada planta en nuestro sitio web. Además, incluimos guías de cuidado con cada pedido.
+                                    <strong className="strong_rpta">Respuesta: </strong> Proporcionamos información detallada sobre el cuidado de cada planta en nuestro sitio web. Además, incluimos guías de cuidado con cada pedido.
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseSeven" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Absolutamente. Utilizamos métodos de pago seguros y encriptación para garantizar la seguridad de tus transacciones.
+                                    <strong className="strong_rpta">Respuesta: </strong> Absolutamente. Utilizamos métodos de pago seguros y encriptación para garantizar la seguridad de tus transacciones.
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseEight" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Sí, nuestro equipo está disponible para asesorarte en la elección de plantas que se adapten a tus condiciones específicas.
+                                    <strong className="strong_rpta">Respuesta: </strong> Sí, nuestro equipo está disponible para asesorarte en la elección de plantas que se adapten a tus condiciones específicas.
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseNine" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Actualmente, nuestro servicio de envío se limita a determinadas ubicaciones. Consulta nuestra página de envíos para obtener más información.
+                                    <strong className="strong_rpta">Respuesta: </strong> Actualmente, nuestro servicio de envío se limita a determinadas ubicaciones. Consulta nuestra página de envíos para obtener más información.
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseTen" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Respetamos tu privacidad. Consulta nuestra política de privacidad para conocer cómo manejamos la información del cliente.
+                                    <strong className="strong_rpta">Respuesta: </strong> Respetamos tu privacidad. Consulta nuestra política de privacidad para conocer cómo manejamos la información del cliente.
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseEleven" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Sí, ofrecemos descuentos para compras al por mayor. Ponte en contacto con nuestro equipo de ventas para obtener más detalles.
+                                    <strong className="strong_rpta">Respuesta: </strong> Sí, ofrecemos descuentos para compras al por mayor. Ponte en contacto con nuestro equipo de ventas para obtener más detalles.
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseTwelve" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Además de una variedad de plantas, ofrecemos macetas decorativas, soportes y otros accesorios para complementar tu experiencia botánica.
+                                    <strong className="strong_rpta">Respuesta: </strong> Además de una variedad de plantas, ofrecemos macetas decorativas, soportes y otros accesorios para complementar tu experiencia botánica.
                                 </div>
                             </div>
                         </div>
@@ -170,7 +170,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseThrerten" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Proporcionamos información de seguimiento para que puedas estar al tanto del estado de tu pedido en todo momento.
+                                    <strong className="strong_rpta">Respuesta: </strong> Proporcionamos información de seguimiento para que puedas estar al tanto del estado de tu pedido en todo momento.
                                 </div>
                             </div>
                         </div>
@@ -182,7 +182,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseFourTeen" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong>Actualmente, la programación de entregas específicas no está disponible, pero trabajamos para ofrecer más opciones en el futuro.
+                                    <strong className="strong_rpta">Respuesta: </strong>Actualmente, la programación de entregas específicas no está disponible, pero trabajamos para ofrecer más opciones en el futuro.
                                 </div>
                             </div>
                         </div>
@@ -194,7 +194,7 @@ function PreguntasFrecuentes() {
                             </h2>
                             <div id="collapseFiveTeen" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                    <strong>Respuesta: </strong> Estamos aquí para ayudarte. Puedes ponerte en contacto con nuestro servicio de atención al cliente a través de nuestro formulario en línea o por correo electrónico. ¡Estamos listos para responder tus preguntas!
+                                    <strong className="strong_rpta">Respuesta: </strong> Estamos aquí para ayudarte. Puedes ponerte en contacto con nuestro servicio de atención al cliente a través de nuestro formulario en línea o por correo electrónico. ¡Estamos listos para responder tus preguntas!
                                 </div>
                             </div>
                         </div>

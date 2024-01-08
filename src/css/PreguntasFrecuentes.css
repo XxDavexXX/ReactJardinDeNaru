@@ -13,6 +13,10 @@
     box-shadow: var(--bs-accordion-btn-focus-box-shadow);
 }
 
+.strong_rpta{
+    color: #29b23e !important;
+}
+
 .accordion-button {
     font-size: 23px !important;
     font-family: a;
