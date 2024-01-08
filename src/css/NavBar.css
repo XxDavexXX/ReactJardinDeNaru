@@ -475,7 +475,7 @@
     .content_num_cuatro_responsive_siete_ochenta{
       display: flex;
       height: 50% !important;
-      align-items: end;
+      align-items: flex-end;
     }
 
     .contenedor_ul_siete_ochenta{
@@ -495,7 +495,7 @@
   .offcanvas-header {
     display: flex;
     align-items: center;
-    justify-content: end !important;
+    justify-content: flex-end !important;
   }
     
   }

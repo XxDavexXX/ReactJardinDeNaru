@@ -8,7 +8,6 @@ import ic_cuadricula from './../imgs/ic_cuadricula.png'
 import ic_menu_lateral from './../imgs/ic_menu_lateral.png'
 import ic_ojo from './../imgs/ic_ojo.png'
 import ic_carrito_compras from './../imgs/ic_carrito_compras.png'
-import planta_compromiso from './../imgs/planta_img6.jpeg'
 import Navbar from './NavBar';
 import Fotter from './Fotter';
 
@@ -144,23 +143,23 @@ function ComprarPlantas() {
                             <div className="contenedor_filtros_precio">
                                 <div className="contenedor_filtros_precio_titulo">Precio</div>
                                 <p className="contenedor_filtros_precio_subtitulo">Usa el range o digite el min y max precio</p>
-                                <div class="price-input">
-                                    <div class="field">
+                                <div className="price-input">
+                                    <div className="field">
                                         <span>Min S/.</span>
-                                        <input type="number" class="input-min" value={minVal} onChange={handleMinChange} />
+                                        <input type="number" className="input-min" value={minVal} onChange={handleMinChange} />
                                     </div>
-                                    <div class="separator">-</div>
-                                    <div class="field">
+                                    <div className="separator">-</div>
+                                    <div className="field">
                                         <span>Max S/.</span>
-                                        <input type="number" class="input-max" value={maxVal} onChange={handleMaxChange} />
+                                        <input type="number" className="input-max" value={maxVal} onChange={handleMaxChange} />
                                     </div>
                                 </div>
-                                <div class="slider">
-                                    <div class="progress" ref={range}></div>
+                                <div className="slider">
+                                    <div className="progress" ref={range}></div>
                                 </div>
-                                <div class="range-input">
-                                    <input type="range" class="range-min" min="0" max="500" value={minVal} step="1" onChange={handleMinChange} ref={rangeInputMin} />
-                                    <input type="range" class="range-max" min="0" max="500" value={maxVal} step="1" onChange={handleMaxChange} ref={rangeInputMax} />
+                                <div className="range-input">
+                                    <input type="range" className="range-min" min="0" max="500" value={minVal} step="1" onChange={handleMinChange} ref={rangeInputMin} />
+                                    <input type="range" className="range-max" min="0" max="500" value={maxVal} step="1" onChange={handleMaxChange} ref={rangeInputMax} />
                                 </div>
 
 
@@ -216,10 +215,10 @@ function ComprarPlantas() {
 
                             <div className="contenedor_filtros_borrar">
                                 <div className="contenedor_filtros_borrar_seccion">Borrar Filtros</div>
-                                <button class="btn_borrar_filtros">
-                                    <span class="shadow"></span>
-                                    <span class="edge"></span>
-                                    <span class="front text"> X
+                                <button className="btn_borrar_filtros">
+                                    <span className="shadow"></span>
+                                    <span className="edge"></span>
+                                    <span className="front text"> X
                                     </span>
                                 </button>
                             </div>
@@ -230,21 +229,22 @@ function ComprarPlantas() {
                 <div className="contenedor_secciones">
                     <div className="contenedor_head_plantas_secciones">
                         <div className="content_icons_shop_plant_views">
-                            <img className="views_plants_icons" src={ic_cuadricula}></img>
-                            <img className="views_plants_icons icon2_detail_view" src={ic_menu_lateral}></img>
+                            <img className="views_plants_icons" alt="views_plants_icons" src={ic_cuadricula}></img>
+                            <img className="views_plants_icons  icon2_detail_view" alt="icon2_detail_view" src={ic_menu_lateral}></img>
                         </div>
                         <div className="content_icons_shop_plant_filter">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle btn_buscar_por titulo_buscar_por" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div className="dropdown">
+                                <button className="btn btn-secondary dropdown-toggle btn_buscar_por titulo_buscar_por" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Filtrar por
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Relevancia</a></li>
-                                    <li><a class="dropdown-item" href="#">Nombre de la A a la Z</a></li>
-                                    <li><a class="dropdown-item" href="#">Nombre de la Z a la A</a></li>
-                                    <li><a class="dropdown-item" href="#">Precio: de más bajo a más alto</a></li>
-                                    <li><a class="dropdown-item" href="#">Precio: de más alto a más bajo</a></li>
+                                <ul className="dropdown-menu">
+                                    <li><a href="#" className="dropdown-item">Relevancia</a></li>
+                                    <li><a href="#" className="dropdown-item">Nombre de la A a la Z</a></li>
+                                    <li><a href="#" className="dropdown-item">Nombre de la Z a la A</a></li>
+                                    <li><a href="#" className="dropdown-item">Precio: de más bajo a más alto</a></li>
+                                    <li><a href="#" className="dropdown-item">Precio: de más alto a más bajo</a></li>
                                 </ul>
+
                             </div>
                         </div>
                     </div>

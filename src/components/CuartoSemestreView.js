@@ -22,15 +22,15 @@ const CuartoSemestreList = () => {
 
     return (
         <div className="container mt-4">
-            <div class="row gx-4 gx-lg-5">
+            <div className="row gx-4 gx-lg-5">
 
                 {/* // Carte de Curso */}
                 {cursos.map(curso => (
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">{curso.titulo}</h2>
-                            <p class="card-text">{curso.descripcion}</p>
+                <div className="col-md-4 mb-5">
+                    <div className="card h-100">
+                        <div className="card-body">
+                            <h2 className="card-title">{curso.titulo}</h2>
+                            <p className="card-text">{curso.descripcion}</p>
                             <i>Semestre Num. {curso.semestre}</i>
                         </div>
                         
@@ -40,8 +40,8 @@ const CuartoSemestreList = () => {
 
                 {/* // */}
             </div>
-            <footer class="py-5 bg-dark">
-                <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+            <footer className="py-5 bg-dark">
+                <div className="container px-4 px-lg-5"><p className="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
             </footer>
         </div>
     );

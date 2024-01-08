@@ -22,9 +22,9 @@ function Nosotros() {
 
             <div className="contenedor_info_nosotros">
                 <div className="contenedor_info_hoja_blanca">
-                    <img className="planta_nosotros" src={planta_nosotros}></img>
+                    <img className="planta_nosotros" alt="planta_nosotros" src={planta_nosotros}></img>
                     <div className="contenedor_info_hoja_verde">
-                        <img className="imagen_nosotros" src={imagen_nosotros}></img>
+                        <img className="imagen_nosotros" alt="imagen_nosotros" src={imagen_nosotros}></img>
                         <div className="titulo_nosotros">
                             Nuestra Historia: Cultivando Vida, Inspirando Cambio
                             <br></br>
@@ -54,7 +54,7 @@ function Nosotros() {
                             </div>
                         </div>
                     </div>
-                    <img className="planta_compromiso" src={planta_compromiso}></img>
+                    <img className="planta_compromiso" alt="planta_compromiso" src={planta_compromiso}></img>
                 </div>
             </div>
             <div className="contenedor_compromiso">
@@ -66,20 +66,20 @@ function Nosotros() {
                     <div className="titulo_compromisos">Nuestros Compromisos</div>
                     <div className="secciones_compromisos">
                         <div className="primera_seccion">
-                            <img className="numero_uno_nosotros" src={numero_uno_nosotros}></img>
+                            <img className="numero_uno_nosotros" alt="numero_uno_nosotros" src={numero_uno_nosotros}></img>
                             <div className="numero_uno_nosotros_div">En "El Jardín de Naru", nos comprometemos a ofrecerte plantas y productos de la más alta calidad. Cada elemento seleccionado es cuidadosamente escogido para asegurar su salud y vitalidad, brindándote un toque único de naturaleza que transformará tu espacio.</div>
                         </div>
                         <div className="primera_seccion parte2_compromiso">
                             <div className="numero_uno_nosotros_div">Nos enorgullece ser defensores del medio ambiente. Comprometidos con prácticas sostenibles, trabajamos activamente para minimizar nuestro impacto en la naturaleza. Desde nuestros empaques hasta las variedades de plantas que ofrecemos, cada decisión está guiada por la responsabilidad ambiental.</div>
-                            <img className="numero_uno_nosotros" src={numero_dos_nosotros}></img>
+                            <img className="numero_uno_nosotros" alt="numero_uno_nosotros" src={numero_dos_nosotros}></img>
                         </div>
                         <div className="primera_seccion">
-                            <img className="numero_uno_nosotros" src={numero_tres_nosotros}></img>
+                            <img className="numero_uno_nosotros" alt="numero_uno_nosotros" src={numero_tres_nosotros}></img>
                             <div className="numero_uno_nosotros_div">Entendemos que cada cliente es único. Nos comprometemos a brindarte una experiencia personalizada desde el momento en que exploras nuestro catálogo hasta la entrega de tu selección. Nuestro equipo está aquí para ayudarte a encontrar las plantas perfectas que se adapten a tus necesidades y estilo de vida.</div>
                         </div>
                         <div className="primera_seccion parte2_compromiso">
                             <div className="numero_uno_nosotros_div">En "El Jardín de Naru", no solo vendemos plantas; también buscamos cultivar el conocimiento. Nos comprometemos a proporcionar recursos educativos que te ayudarán a cuidar y disfrutar de tus plantas. Desde consejos de cuidado hasta inspiración para la decoración, queremos ser tu fuente confiable en el fascinante mundo botánico.</div>
-                            <img className="numero_uno_nosotros" src={numero_cuatro_nosotros}></img>
+                            <img className="numero_uno_nosotros" alt="numero_uno_nosotros" src={numero_cuatro_nosotros}></img>
                         </div>
                     </div>
                 </div>

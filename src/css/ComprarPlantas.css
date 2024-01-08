@@ -97,7 +97,7 @@
 .content_icons_shop_plant_filter {
   width: 70%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .btn_buscar_por:not(:disabled) {

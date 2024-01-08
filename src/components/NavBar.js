@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import TelefonoImg from './../imgs/telefono.png';
 import MapaImg from './../imgs/mapa.png';
 import logoHomeNaru2 from './../imgs/logoHomeNaru2.png';
-import BuscarImg from './../imgs/buscar.png';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './../css/NavBar.css'
@@ -14,26 +14,26 @@ function Navbar() {
     const { pathname } = location;
     return (
         <div className="contendor_todos_navbars">
-            <div class="call_to_action">
+            <div className="call_to_action">
 
                 {/* Responsive 1150 px */}
 
                 <div className="responsive_content_nums">
                     <div className="responsive_content_nums_div">
-                        <div class="responsive_content_num_dos">
+                        <div className="responsive_content_num_dos">
                             <div>I</div>
                         </div>
-                        <div class="responsive_content_num">
-                            <img class="img_telefono" src={TelefonoImg} alt="Icon de Telefono" />
+                        <div className="responsive_content_num">
+                            <img className="img_telefono" src={TelefonoImg} alt="Icon de Telefono" />
                             <div>(+51) 903 - 010 - 882 / (+01 - 497 - 1991)</div>
                         </div>
                     </div>
                     <div className="responsive_content_nums_div">
-                        <div class="responsive_content_num_dos">
+                        <div className="responsive_content_num_dos">
                             <div>I</div>
                         </div>
-                        <div class="responsive_content_num_tres">
-                            <img class="img_telefono" src={MapaImg} alt="Icon de marcador de maps" />
+                        <div className="responsive_content_num_tres">
+                            <img className="img_telefono" src={MapaImg} alt="Icon de marcador de maps" />
                             <div>El Cuadro, Chaclacayo, Lima - Perú</div>
                         </div>
                     </div>
@@ -41,105 +41,105 @@ function Navbar() {
 
                 {/* Responsive 1150 px */}
 
-                <div class="content_num">
-                    <img class="img_telefono" src={TelefonoImg} alt="Icon de Telefono" />
+                <div className="content_num">
+                    <img className="img_telefono" src={TelefonoImg} alt="Icon de Telefono" />
                     <div>(+51) 903 - 010 - 882 / (+01 - 497 - 1991)</div>
                 </div>
-                <div class="content_num_dos">
+                <div className="content_num_dos">
                     <div>I</div>
                 </div>
-                <div class="content_num_tres">
-                    <img class="img_telefono" src={MapaImg} alt="Icon de marcador de maps" />
+                <div className="content_num_tres">
+                    <img className="img_telefono" src={MapaImg} alt="Icon de marcador de maps" />
                     <div>El Cuadro, Chaclacayo, Lima - Perú</div>
                 </div>
-                <div class="content_num_dos">
+                <div className="content_num_dos">
                     <div>I</div>
                 </div>
 
-                <div class="content_num_cuatro div_cuatro_uno">
-                    <button class="btn">
-                        <div class="wrapper">
-                            <div class="text">Registrarse </div>
+                <div className="content_num_cuatro div_cuatro_uno">
+                    <button className="btn">
+                        <div className="wrapper">
+                            <div className="text">Registrarse </div>
 
-                            <div class="flower flower1">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower1">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower2">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower2">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower3">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower3">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower4">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower4">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower5">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower5">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower6">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower6">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
                         </div>
                     </button>
                 </div>
-                <div class="content_num_cuatro">
-                    <button class="btn">
-                        <div class="wrapper">
-                            <div class="text">Login </div>
+                <div className="content_num_cuatro">
+                    <button className="btn">
+                        <div className="wrapper">
+                            <div className="text">Login </div>
 
-                            <div class="flower flower1">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower1">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower2">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower2">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower3">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower3">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower4">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower4">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower5">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower5">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
-                            <div class="flower flower6">
-                                <div class="petal one"></div>
-                                <div class="petal two"></div>
-                                <div class="petal three"></div>
-                                <div class="petal four"></div>
+                            <div className="flower flower6">
+                                <div className="petal one"></div>
+                                <div className="petal two"></div>
+                                <div className="petal three"></div>
+                                <div className="petal four"></div>
                             </div>
                         </div>
                     </button>
@@ -150,126 +150,126 @@ function Navbar() {
 
             {/* Responsive 780 px */}
 
-            <nav class="navbar responsive_siete_ochenta_navbar bg-body-tertiary fixed-top">
+            <nav className="navbar responsive_siete_ochenta_navbar bg-body-tertiary fixed-top">
 
-                <div class="container-fluid">
+                <div className="container-fluid">
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="content_num_cuatro div_cuatro_uno">
-                        <button class="btn">
-                            <div class="wrapper">
-                                <div class="text">Registrarse </div>
+                    <div className="content_num_cuatro div_cuatro_uno">
+                        <button className="btn">
+                            <div className="wrapper">
+                                <div className="text">Registrarse </div>
 
-                                <div class="flower flower1">
-                                    <div class="petal one"></div>
-                                    <div class="petal two"></div>
-                                    <div class="petal three"></div>
-                                    <div class="petal four"></div>
+                                <div className="flower flower1">
+                                    <div className="petal one"></div>
+                                    <div className="petal two"></div>
+                                    <div className="petal three"></div>
+                                    <div className="petal four"></div>
                                 </div>
-                                <div class="flower flower2">
-                                    <div class="petal one"></div>
-                                    <div class="petal two"></div>
-                                    <div class="petal three"></div>
-                                    <div class="petal four"></div>
+                                <div className="flower flower2">
+                                    <div className="petal one"></div>
+                                    <div className="petal two"></div>
+                                    <div className="petal three"></div>
+                                    <div className="petal four"></div>
                                 </div>
-                                <div class="flower flower3">
-                                    <div class="petal one"></div>
-                                    <div class="petal two"></div>
-                                    <div class="petal three"></div>
-                                    <div class="petal four"></div>
+                                <div className="flower flower3">
+                                    <div className="petal one"></div>
+                                    <div className="petal two"></div>
+                                    <div className="petal three"></div>
+                                    <div className="petal four"></div>
                                 </div>
-                                <div class="flower flower4">
-                                    <div class="petal one"></div>
-                                    <div class="petal two"></div>
-                                    <div class="petal three"></div>
-                                    <div class="petal four"></div>
+                                <div className="flower flower4">
+                                    <div className="petal one"></div>
+                                    <div className="petal two"></div>
+                                    <div className="petal three"></div>
+                                    <div className="petal four"></div>
                                 </div>
-                                <div class="flower flower5">
-                                    <div class="petal one"></div>
-                                    <div class="petal two"></div>
-                                    <div class="petal three"></div>
-                                    <div class="petal four"></div>
+                                <div className="flower flower5">
+                                    <div className="petal one"></div>
+                                    <div className="petal two"></div>
+                                    <div className="petal three"></div>
+                                    <div className="petal four"></div>
                                 </div>
-                                <div class="flower flower6">
-                                    <div class="petal one"></div>
-                                    <div class="petal two"></div>
-                                    <div class="petal three"></div>
-                                    <div class="petal four"></div>
+                                <div className="flower flower6">
+                                    <div className="petal one"></div>
+                                    <div className="petal two"></div>
+                                    <div className="petal three"></div>
+                                    <div className="petal four"></div>
                                 </div>
                             </div>
                         </button>
                     </div>
 
 
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                            <button type="button" class="btn-close justify-content-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div className="offcanvas-header">
+                            <button type="button" className="btn-close justify-content-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-start flex-grow-1 pe-3 contenedor_ul_siete_ochenta">
-                                <li class="nav-item">
-                                    <a class="nav-link active active_link_this" aria-current="page" href="#">Inicio</a>
+                        <div className="offcanvas-body">
+                            <ul className="navbar-nav justify-content-start flex-grow-1 pe-3 contenedor_ul_siete_ochenta">
+                                <li className="nav-item">
+                                    <a className="nav-link active active_link_this" aria-current="page" href="#">Inicio</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Comprar plantas</a>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Comprar plantas</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Nosotros</a>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Nosotros</a>
                                 </li>
-                                {/* <li class="nav-item">
-                                    <a class="nav-link" href="#">Comprar macetas</a>
+                                {/* <li className="nav-item">
+                                    <a className="nav-link" href="#">Comprar macetas</a>
                                 </li> */}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Preguntas frecuentes</a>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Preguntas frecuentes</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Eventos</a>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Eventos</a>
                                 </li>
                             </ul>
 
-                            <div class="content_num_cuatro_responsive_siete_ochenta justify-content-center flex-grow-1 pe-3">
-                                <button class="btn btn_flores_log">
-                                    <div class="wrapper">
-                                        <div class="text">Login </div>
+                            <div className="content_num_cuatro_responsive_siete_ochenta justify-content-center flex-grow-1 pe-3">
+                                <button className="btn btn_flores_log">
+                                    <div className="wrapper">
+                                        <div className="text">Login </div>
 
-                                        <div class="flower flower1">
-                                            <div class="petal one"></div>
-                                            <div class="petal two"></div>
-                                            <div class="petal three"></div>
-                                            <div class="petal four"></div>
+                                        <div className="flower flower1">
+                                            <div className="petal one"></div>
+                                            <div className="petal two"></div>
+                                            <div className="petal three"></div>
+                                            <div className="petal four"></div>
                                         </div>
-                                        <div class="flower flower2">
-                                            <div class="petal one"></div>
-                                            <div class="petal two"></div>
-                                            <div class="petal three"></div>
-                                            <div class="petal four"></div>
+                                        <div className="flower flower2">
+                                            <div className="petal one"></div>
+                                            <div className="petal two"></div>
+                                            <div className="petal three"></div>
+                                            <div className="petal four"></div>
                                         </div>
-                                        <div class="flower flower3">
-                                            <div class="petal one"></div>
-                                            <div class="petal two"></div>
-                                            <div class="petal three"></div>
-                                            <div class="petal four"></div>
+                                        <div className="flower flower3">
+                                            <div className="petal one"></div>
+                                            <div className="petal two"></div>
+                                            <div className="petal three"></div>
+                                            <div className="petal four"></div>
                                         </div>
-                                        <div class="flower flower4">
-                                            <div class="petal one"></div>
-                                            <div class="petal two"></div>
-                                            <div class="petal three"></div>
-                                            <div class="petal four"></div>
+                                        <div className="flower flower4">
+                                            <div className="petal one"></div>
+                                            <div className="petal two"></div>
+                                            <div className="petal three"></div>
+                                            <div className="petal four"></div>
                                         </div>
-                                        <div class="flower flower5">
-                                            <div class="petal one"></div>
-                                            <div class="petal two"></div>
-                                            <div class="petal three"></div>
-                                            <div class="petal four"></div>
+                                        <div className="flower flower5">
+                                            <div className="petal one"></div>
+                                            <div className="petal two"></div>
+                                            <div className="petal three"></div>
+                                            <div className="petal four"></div>
                                         </div>
-                                        <div class="flower flower6">
-                                            <div class="petal one"></div>
-                                            <div class="petal two"></div>
-                                            <div class="petal three"></div>
-                                            <div class="petal four"></div>
+                                        <div className="flower flower6">
+                                            <div className="petal one"></div>
+                                            <div className="petal two"></div>
+                                            <div className="petal three"></div>
+                                            <div className="petal four"></div>
                                         </div>
                                     </div>
                                 </button>
