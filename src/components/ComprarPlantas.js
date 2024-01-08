@@ -237,13 +237,6 @@ function ComprarPlantas() {
                                 <button className="btn btn-secondary dropdown-toggle btn_buscar_por titulo_buscar_por" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Filtrar por
                                 </button>
-                                <ul className="dropdown-menu">
-                                    <li><a href="#" className="dropdown-item">Relevancia</a></li>
-                                    <li><a href="#" className="dropdown-item">Nombre de la A a la Z</a></li>
-                                    <li><a href="#" className="dropdown-item">Nombre de la Z a la A</a></li>
-                                    <li><a href="#" className="dropdown-item">Precio: de más bajo a más alto</a></li>
-                                    <li><a href="#" className="dropdown-item">Precio: de más alto a más bajo</a></li>
-                                </ul>
 
                             </div>
                         </div>

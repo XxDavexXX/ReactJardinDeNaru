@@ -58,10 +58,6 @@ function Nosotros() {
                 </div>
             </div>
             <div className="contenedor_compromiso">
-                {/* <div className="contenido_compromiso">
-                    <img className="planta_compromiso" src={planta_compromiso}></img>
-                </div> */}
-
                 <div className="contenido_compromiso_cuatro_partes">
                     <div className="titulo_compromisos">Nuestros Compromisos</div>
                     <div className="secciones_compromisos">

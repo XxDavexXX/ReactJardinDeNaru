@@ -30,17 +30,17 @@ function Home() {
             <div className="primer_content">
               <div className="content-all">
                 <div className="content-carrousel">
-                  <figure><img src={planta_img1} /></figure>
-                  <figure><img src={planta_img1} /></figure>
-                  <figure><img src={planta_img2} /></figure>
-                  <figure><img src={planta_img3} /></figure>
-                  <figure><img src={planta_img4} /></figure>
-                  <figure><img src={planta_img5} /></figure>
-                  <figure><img src={planta_img6} /></figure>
-                  <figure><img src={planta_img7} /></figure>
-                  <figure><img src={planta_img8} /></figure>
-                  <figure><img src={planta_img9} /></figure>
-                </div>
+                  <figure><img alt="planta_imgs" src={planta_img1} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img1} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img2} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img3} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img4} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img5} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img6} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img7} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img8} /></figure>
+                  <figure><img alt="planta_imgs" src={planta_img9} /></figure>
+                </div> alt="planta_imgs"
               </div>
             </div>
 

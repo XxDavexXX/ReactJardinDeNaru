@@ -211,22 +211,19 @@ function Navbar() {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-start flex-grow-1 pe-3 contenedor_ul_siete_ochenta">
                                 <li className="nav-item">
-                                    <a className="nav-link active active_link_this" aria-current="page" href="#">Inicio</a>
+                                    <button className="nav-link active active_link_this" aria-current="page">Inicio</button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Comprar plantas</a>
+                                    <button className="nav-link" >Comprar plantas</button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Nosotros</a>
-                                </li>
-                                {/* <li className="nav-item">
-                                    <a className="nav-link" href="#">Comprar macetas</a>
-                                </li> */}
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Preguntas frecuentes</a>
+                                    <button className="nav-link" >Nosotros</button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Eventos</a>
+                                    <button className="nav-link" >Preguntas frecuentes</button>
+                                </li>
+                                <li className="nav-item">
+                                    <button className="nav-link" >Eventos</button>
                                 </li>
                             </ul>
 
@@ -297,16 +294,12 @@ function Navbar() {
                         <li className="navbar-item">
                             <Link className={`navbar-list ${pathname === '/nosotros' ? 'active' : ''}`} to="/nosotros">Nosotros</Link>
                         </li>
-                        {/* <li class="navbar-item">
-                            <a class="navbar-list" href="#">Comprar macetas</a>
-                        </li> */}
                         <li className="navbar-item">
                             <Link className={`navbar-list ${pathname === '/preguntas-frecuentes' ? 'active' : ''}`} to="/preguntas-frecuentes">Preguntas frecuentes</Link>
                         </li>
                         <li className="navbar-item">
                             <Link className={`navbar-list ${pathname === '/eventos' ? 'active' : ''}`} to="/eventos">Eventos</Link>
                         </li>
-                        {/* <img src={BuscarImg} alt="Buscar" /> */}
                     </ul>
                 </div>
             </nav>

@@ -50,7 +50,7 @@ function Eventos() {
                                 </div>
 
                             </div>
-                            <a className="link_section_uno" href="#">Leer Más...</a>
+                            <button className="link_section_uno" href="#">Leer Más...</button>
                         </div>
                     </div>
                 </div>
