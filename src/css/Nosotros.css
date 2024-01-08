@@ -34,8 +34,8 @@
 .contenedor_info_nosotros {
     width: 100%;
     position: relative;
-    top: -520px;
-    z-index: 0;
+    top: -498px;
+    z-index: -1;
     display: flex;
     justify-content: center;
     height: 1850px;
