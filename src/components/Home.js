@@ -171,8 +171,11 @@ function Home() {
 
 
         <div className="contenedor_mapa">
-          <iframe title="Titulo Unico" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.7336494930273!2d-76.8007488254864!3d-11.992922940899478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105e9b6d0f9fe4b%3A0x918ada97c63ef207!2sEl%20Cuadro%2C%20Chaclacayo%2015472!5e0!3m2!1ses!2spe!4v1703201244053!5m2!1ses!2spe" width="1724" height="450" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
+          <center className="centrado_mapa"><iframe title="Titulo Unico" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.7336494930273!2d-76.8007488254864!3d-11.992922940899478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105e9b6d0f9fe4b%3A0x918ada97c63ef207!2sEl%20Cuadro%2C%20Chaclacayo%2015472!5e0!3m2!1ses!2spe!4v1703201244053!5m2!1ses!2spe" width="90%" height="450" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe></center>
+        <div className="contenedor_mapa">
+        </div>
+       
 
 
 

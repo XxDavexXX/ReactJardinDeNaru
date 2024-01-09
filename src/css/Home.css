@@ -6,6 +6,7 @@
   justify-content: center;
 }
 
+
 .debajo_im_intro {
   width: 1724px;
   margin-left: 5%;
@@ -27,7 +28,7 @@
 
 .contenedor_mapa {
   position: relative;
-  padding: 20px 0;
+  padding: 15px 0;
   background-color: #153223;
   z-index: -2;
   width: 100%;
@@ -722,4 +723,8 @@ form {
     text-align: center;
 }
 
+}
+
+.centrado_mapa{
+  background-color: #153223;
 }

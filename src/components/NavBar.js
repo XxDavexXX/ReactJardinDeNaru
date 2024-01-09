@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import TelefonoImg from './../imgs/telefono.png';
@@ -12,6 +12,35 @@ import './../css/NavBar.css'
 function Navbar() {
     const location = useLocation();
     const { pathname } = location;
+
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const handleToggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    
+        // Obtén la referencia al elemento body
+        const body = document.querySelector('body');
+    
+        if (!menuOpen) {
+            // Si el menú se abre, agrega estilos al body
+            body.style.overflow = 'hidden';
+            body.style.paddingRight = '19px';
+        } else {
+            // Si el menú se cierra, restaura los estilos originales del body
+            body.style.overflow = 'auto';
+            body.style.paddingRight = '0';
+        }
+    };
+
+    const handleLinkClick = () => {
+        setMenuOpen(false);
+
+        // Restaura los estilos originales del body al hacer clic en un enlace
+        const body = document.querySelector('body');
+        body.style.overflow = 'visible';
+        body.style.paddingRight = '0';
+    };
+
     return (
         <div className="contendor_todos_navbars">
             <div className="call_to_action">
@@ -204,26 +233,28 @@ function Navbar() {
                     </div>
 
 
-                    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div className={`offcanvas offcanvas-end${menuOpen ? ' show' : ''}`} tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                         <div className="offcanvas-header">
-                            <button type="button" className="btn-close justify-content-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" className="btn-close justify-content-end" data-bs-dismiss="offcanvas" aria-label="Close" onClick={handleToggleMenu}></button>
                         </div>
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-start flex-grow-1 pe-3 contenedor_ul_siete_ochenta">
-                                <li className="nav-item">
-                                    <button className="nav-link active active_link_this" aria-current="page">Inicio</button>
+
+                                <li className="navbar-item">
+                                    <Link style={{ width: '60px' }} className={`nav-link a_nav_celular ${pathname === '/' ? 'active active_link_this' : ''}`} to="/" onClick={handleLinkClick}>Inicio</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <button className="nav-link" >Comprar plantas</button>
+
+                                <li className="navbar-item">
+                                    <Link style={{ width: '170px' }} className={`nav-link a_nav_celular ${pathname === '/comprar_plantas' ? 'active active_link_this' : ''}`} to="/comprar_plantas" onClick={handleLinkClick}>Comprar plantas</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <button className="nav-link" >Nosotros</button>
+                                <li className="navbar-item">
+                                    <Link style={{ width: '95px' }} className={`nav-link a_nav_celular ${pathname === '/nosotros' ? 'active active_link_this' : ''}`} to="/nosotros" onClick={handleLinkClick}>Nosotros</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <button className="nav-link" >Preguntas frecuentes</button>
+                                <li className="navbar-item">
+                                    <Link style={{ width: '205px' }} className={`nav-link a_nav_celular ${pathname === '/preguntas-frecuentes' ? 'active active_link_this' : ''}`} to="/preguntas-frecuentes" onClick={handleLinkClick}>Preguntas frecuentes</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <button className="nav-link" >Eventos</button>
+                                <li className="navbar-item">
+                                    <Link style={{ width: '85px' }} className={`nav-link a_nav_celular ${pathname === '/eventos' ? 'active active_link_this' : ''}`} to="/eventos" onClick={handleLinkClick}>Eventos</Link>
                                 </li>
                             </ul>
 

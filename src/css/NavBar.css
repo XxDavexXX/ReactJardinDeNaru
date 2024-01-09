@@ -354,6 +354,7 @@
       display: flex;
       height: 100%;
       flex-direction: column;
+      justify-content: center;
     }
 
     /* Contenedor de los telefono y ubicacion  */
@@ -373,6 +374,10 @@
     .responsive_content_num img {
       width: 20px;
       height: 20px;
+    }
+
+    .call_to_action{
+      height: 85px;
     }
     
     .responsive_content_num div {
@@ -428,6 +433,8 @@
     .navbar-items{
       width: 100%;
     }
+
+
   }
 
   @media (max-width: 860px) {
@@ -449,9 +456,6 @@
       width: 100%;
       background-color: #fff;
       margin-top: 15px;
-      position: fixed;
-      z-index: 10;
-      top:55px;
       height: auto;
       display: flex;
       flex-direction: column;
