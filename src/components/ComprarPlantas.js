@@ -88,7 +88,7 @@ function ComprarPlantas() {
         // Puedes ajustar la URL según la estructura de tu API
         const fetchPlantasData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/plantas/');
+                const response = await fetch('https://eljardindenaru.onrender.com/');
                 const data = await response.json();
                 setPlantas(data);
             } catch (error) {
