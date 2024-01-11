@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Accordion from 'react-bootstrap/Accordion';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import ic_cuadricula from './../imgs/ic_cuadricula.png'
 import ic_menu_lateral from './../imgs/ic_menu_lateral.png'
 import ic_ojo from './../imgs/ic_ojo.png'
@@ -78,6 +81,14 @@ function ComprarPlantas() {
     const rangeInputMax = useRef();
     const range = useRef();
 
+    const [minVal2, setMinVal2] = useState(0);
+    const [maxVal2, setMaxVal2] = useState(500);
+    const priceGap2 = 1;
+
+    const rangeInputMin2 = useRef();
+    const rangeInputMax2 = useRef();
+    const range2 = useRef();
+
     const [modalShow, setModalShow] = React.useState(false);
 
     const [plantas, setPlantas] = useState([]);
@@ -108,6 +119,28 @@ function ComprarPlantas() {
 
     }, [minVal, maxVal]);
 
+    useEffect(() => {
+        range2.current.style.left = ((minVal2 / rangeInputMin2.current.max) * 100) + "%";
+        range2.current.style.right = 100 - ((maxVal2 / rangeInputMax2.current.max) * 100) + "%";
+
+
+    }, [minVal2, maxVal2]);
+
+    const handleMinChange2 = (e) => {
+        let val2 = parseInt(e.target.value);
+        if ((maxVal2 - val2) < priceGap2) {
+            val2 = maxVal2 - priceGap2;
+        }
+        setMinVal2(val2);
+    };
+
+    const handleMaxChange2 = (e) => {
+        let val2 = parseInt(e.target.value);
+        if ((val2 - minVal2) < priceGap2) {
+            val2 = minVal2 + priceGap2;
+        }
+        setMaxVal2(val2);
+    };
     const handleMinChange = (e) => {
         let val = parseInt(e.target.value);
         if ((maxVal - val) < priceGap) {
@@ -140,87 +173,178 @@ function ComprarPlantas() {
                     <div className="contenedor_titulo_filtros_content">
                         <div className="titulo_filtros">Filtrar</div>
                         <div className="contenedor_filtros">
-                            <div className="contenedor_filtros_precio">
-                                <div className="contenedor_filtros_precio_titulo">Precio</div>
-                                <p className="contenedor_filtros_precio_subtitulo">Usa el range o digite el min y max precio</p>
-                                <div className="price-input">
-                                    <div className="field">
-                                        <span>Min S/.</span>
-                                        <input type="number" className="input-min" value={minVal} onChange={handleMinChange} />
-                                    </div>
-                                    <div className="separator">-</div>
-                                    <div className="field">
-                                        <span>Max S/.</span>
-                                        <input type="number" className="input-max" value={maxVal} onChange={handleMaxChange} />
-                                    </div>
-                                </div>
-                                <div className="slider">
-                                    <div className="progress" ref={range}></div>
-                                </div>
-                                <div className="range-input">
-                                    <input type="range" className="range-min" min="0" max="500" value={minVal} step="1" onChange={handleMinChange} ref={rangeInputMin} />
-                                    <input type="range" className="range-max" min="0" max="500" value={maxVal} step="1" onChange={handleMaxChange} ref={rangeInputMax} />
-                                </div>
 
+                            {/* ///// */}
 
+                            <div className="responsive_movile">
+
+                                <Accordion className="acordion_filtros_movile" defaultActiveKey="">
+                                    <Accordion.Item eventKey="0">
+                                        <Accordion.Header>Precio</Accordion.Header>
+                                        <Accordion.Body>
+                                            <p className="contenedor_filtros_precio_subtitulo">Usa el range o digite el min y max precio</p>
+                                            <div className="price-input">
+                                                <div className="field">
+                                                    <span>Min S/.</span>
+                                                    <input type="number" className="input-min" value={minVal2} onChange={handleMinChange} />
+                                                </div>
+                                                <div className="separator">-</div>
+                                                <div className="field">
+                                                    <span>Max S/.</span>
+                                                    <input type="number" className="input-max" value={maxVal2} onChange={handleMaxChange} />
+                                                </div>
+                                            </div>
+                                            <div className="slider">
+                                                <div className="progress" ref={range2}></div>
+                                            </div>
+                                            <div className="range-input">
+                                                <input type="range" className="range-min" min="0" max="500" value={minVal2} step="1" onChange={handleMinChange2} ref={rangeInputMin2} />
+                                                <input type="range" className="range-max" min="0" max="500" value={maxVal2} step="1" onChange={handleMaxChange2} ref={rangeInputMax2} />
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="1">
+                                        <Accordion.Header>Tipos Plantas</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Echeveria</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Cactus de San Pedro</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Serpiente de la Madre</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Cactus Bola de Nieve</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Aloe Vera</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Crasas Haworthia</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Cactus Orejas de Conejo</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Rosa del Desierto</div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Cactus Barril </div>
+                                            </div>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                                <div className="nombre_tipo_planta">Cactus de Navidad</div>
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="2">
+                                        <Accordion.Header>Borrar Filtros</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className="contenedor_filtros_borrar">
+                                                <button className="btn_borrar_filtros">
+                                                    <span className="shadow"></span>
+                                                    <span className="edge"></span>
+                                                    <span className="front text"> X
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
                             </div>
 
-                            <div className="hr_personal"></div>
+                            <div className="responsive_pc">
+                                <div className="contenedor_filtros_precio">
+                                    <div className="contenedor_filtros_precio_titulo">Precio</div>
+                                    <p className="contenedor_filtros_precio_subtitulo">Usa el range o digite el min y max precio</p>
+                                    <div className="price-input">
+                                        <div className="field">
+                                            <span>Min S/.</span>
+                                            <input type="number" className="input-min" value={minVal} onChange={handleMinChange} />
+                                        </div>
+                                        <div className="separator">-</div>
+                                        <div className="field">
+                                            <span>Max S/.</span>
+                                            <input type="number" className="input-max" value={maxVal} onChange={handleMaxChange} />
+                                        </div>
+                                    </div>
+                                    <div className="slider">
+                                        <div className="progress" ref={range}></div>
+                                    </div>
+                                    <div className="range-input">
+                                        <input type="range" className="range-min" min="0" max="500" value={minVal} step="1" onChange={handleMinChange} ref={rangeInputMin} />
+                                        <input type="range" className="range-max" min="0" max="500" value={maxVal} step="1" onChange={handleMaxChange} ref={rangeInputMax} />
+                                    </div>
+                                </div>
 
-                            <div className="contenedor_filtros_tipos_plantas">
-                                <div className="contenedor_filtros_tipos_plantas_titulo">Tipos plantas</div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Echeveria</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Cactus de San Pedro</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Serpiente de la Madre</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Cactus Bola de Nieve</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Aloe Vera</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Crasas Haworthia</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Cactus Orejas de Conejo</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Rosa del Desierto</div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Cactus Barril </div>
-                                </div>
-                                <div className="contenedor_filtros_tipos_plantas_tipos">
-                                    <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                    <div className="nombre_tipo_planta">Cactus de Navidad</div>
-                                </div>
-                            </div>
+                                <div className="hr_personal"></div>
 
-                            <div className="hr_personal"></div>
+                                <div className="contenedor_filtros_tipos_plantas">
+                                    <div className="contenedor_filtros_tipos_plantas_titulo">Tipos plantas</div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Echeveria</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Cactus de San Pedro</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Serpiente de la Madre</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Cactus Bola de Nieve</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Aloe Vera</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Crasas Haworthia</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Cactus Orejas de Conejo</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Rosa del Desierto</div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Cactus Barril </div>
+                                    </div>
+                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
+                                        <div className="nombre_tipo_planta">Cactus de Navidad</div>
+                                    </div>
+                                </div>
 
-                            <div className="contenedor_filtros_borrar">
-                                <div className="contenedor_filtros_borrar_seccion">Borrar Filtros</div>
-                                <button className="btn_borrar_filtros">
-                                    <span className="shadow"></span>
-                                    <span className="edge"></span>
-                                    <span className="front text"> X
-                                    </span>
-                                </button>
+                                <div className="hr_personal"></div>
+
+                                <div className="contenedor_filtros_borrar">
+                                    <div className="contenedor_filtros_borrar_seccion">Borrar Filtros</div>
+                                    <button className="btn_borrar_filtros">
+                                        <span className="shadow"></span>
+                                        <span className="edge"></span>
+                                        <span className="front text"> X
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -233,12 +357,12 @@ function ComprarPlantas() {
                             <img className="views_plants_icons  icon2_detail_view" alt="icon2_detail_view" src={ic_menu_lateral}></img>
                         </div>
                         <div className="content_icons_shop_plant_filter">
-                            <div className="dropdown">
-                                <button className="btn btn-secondary dropdown-toggle btn_buscar_por titulo_buscar_por" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Filtrar por
-                                </button>
-
-                            </div>
+                            <DropdownButton style={{ background: 'transparent !important' }} id="dropdown-item-button" className="" title="Ordernar por">
+                                <Dropdown.ItemText>Ordernar por</Dropdown.ItemText>
+                                <Dropdown.Item as="button">Action</Dropdown.Item>
+                                <Dropdown.Item as="button">Another action</Dropdown.Item>
+                                <Dropdown.Item as="button">Something else</Dropdown.Item>
+                            </DropdownButton>
                         </div>
                     </div>
 

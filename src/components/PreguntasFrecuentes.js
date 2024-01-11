@@ -17,7 +17,7 @@ function PreguntasFrecuentes() {
 
             <div className="contenedor_foto_preguntas">
                 <div className="contentPreguntasRespuestas">
-                    <div className="accordion" id="accordionExample">
+                    <div className="accordion_preguntas_frecuentes" id="accordionExample">
                         <div className="accordion-item">
                             <h2 className="accordion-header">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
