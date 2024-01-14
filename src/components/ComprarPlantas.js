@@ -359,9 +359,11 @@ function ComprarPlantas() {
                         <div className="content_icons_shop_plant_filter">
                             <DropdownButton style={{ background: 'transparent !important' }} id="dropdown-item-button" className="" title="Ordernar por">
                                 <Dropdown.ItemText>Ordernar por</Dropdown.ItemText>
-                                <Dropdown.Item as="button">Action</Dropdown.Item>
-                                <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                <Dropdown.Item as="button">Something else</Dropdown.Item>
+                                <Dropdown.Item as="button">Relevancia</Dropdown.Item>
+                                <Dropdown.Item as="button">Nombre de la A a la Z</Dropdown.Item>
+                                <Dropdown.Item as="button">Nombre de la Z a la A</Dropdown.Item>
+                                <Dropdown.Item as="button">Precio más bajo a más alto</Dropdown.Item>
+                                <Dropdown.Item as="button">Precio más alto a más bajo</Dropdown.Item>
                             </DropdownButton>
                         </div>
                     </div>
