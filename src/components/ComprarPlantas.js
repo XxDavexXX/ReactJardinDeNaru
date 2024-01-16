@@ -94,21 +94,212 @@ function ComprarPlantas() {
     const [plantas, setPlantas] = useState([]);
     const [selectedPlanta, setSelectedPlanta] = useState(null);
 
+    const [tiposSeleccionados, setTiposSeleccionados] = useState([]);
+
+
+    const [plantastipos, setPlantasTipos] = useState([]);
+
+    const [loading, setLoading] = useState(true);
+
+    const [filterTimeout, setFilterTimeout] = useState(null);
+
     useEffect(() => {
-        // Aquí deberías tener una función que obtiene los datos de la API
-        // Puedes ajustar la URL según la estructura de tu API
+
         const fetchPlantasData = async () => {
             try {
                 const response = await fetch('https://eljardindenaru.onrender.com/');
                 const data = await response.json();
                 setPlantas(data);
+                setLoading(false); // Marca como cargados los datos cuando la solicitud es exitosa
             } catch (error) {
                 console.error('Error fetching plantas:', error);
+                setLoading(false); // Marca como cargados los datos en caso de error
             }
         };
 
         fetchPlantasData();
     }, []);
+    
+    useEffect(() => {
+
+        const fetchPlantasTiposData = async () => {
+            try {
+                const responsetipoplanta = await fetch('http://127.0.0.1:8000/tipo-planta/');
+                const datatipoplanta = await responsetipoplanta.json();
+                setPlantasTipos(datatipoplanta);
+                setLoading(false); // Marca como cargados los datos cuando la solicitud es exitosa
+            } catch (error) {
+                console.error('Error fetching tipos plantas:', error);
+                setLoading(false); // Marca como cargados los datos en caso de error
+            }
+        };
+
+        fetchPlantasTiposData();
+    }, []);
+
+
+    
+
+    const handleCheckboxChange = (tipoId) => {
+        setTiposSeleccionados((prevTipos) => {
+            if (prevTipos.includes(tipoId)) {
+                return prevTipos.filter(id => id !== tipoId);
+            } else {
+                return [...prevTipos, tipoId];
+            }
+        });
+    };
+
+    useEffect(() => {
+        const nuevaURL = construirURL(tiposSeleccionados);
+        cargarRegistros(nuevaURL);
+    }, [tiposSeleccionados]);
+
+    const construirURL = (tiposSeleccionados) => {
+        const baseURL = 'http://127.0.0.1:8000/plantas-by-tipo/';
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}?${queryString}`;
+    };
+
+    const cargarRegistros = async (url) => {
+        setLoading(true);
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+
+
+
+    const fetchPlantasOrdenadasMasMenos = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/plantas-order-mas-menos');
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+        }
+    };
+
+    const handleOrdenarPorPrecioMasMenos = () => {
+        fetchPlantasOrdenadasMasMenos();
+    };
+
+    const fetchPlantasOrdenadasMenosMas = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/plantas-order-menos-mas');
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+        }
+    };
+
+    const handleOrdenarPorPrecioMenosMas = () => {
+        fetchPlantasOrdenadasMenosMas();
+    };
+
+    const fetchPlantasOrdenadasRelevancia = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/plantas-order-relevancia');
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+        }
+    };
+
+    const handleOrdenarPorRelevancia = () => {
+        fetchPlantasOrdenadasRelevancia();
+    };
+
+    const fetchPlantasOrdenadasAtoZ = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/plantas-order-a-z');
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+        }
+    };
+
+    const handleOrdenarPorAtoZ = () => {
+        fetchPlantasOrdenadasAtoZ();
+    };
+
+    const fetchPlantasOrdenadasZtoA = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://127.0.0.1:8000/plantas-order-z-a');
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+        }
+    };
+
+    const handleOrdenarPorZtoA = () => {
+        fetchPlantasOrdenadasZtoA();
+    };
+
+
+    const fetchPlantasFiltrarMinyMax = async () => {
+        setLoading(true);
+        try {
+            const currentMinVal = rangeInputMin.current.value;
+            const currentMaxVal = rangeInputMax.current.value;
+            const response = await fetch(`http://127.0.0.1:8000/plantas-by-price-range/?min_price=${currentMinVal}&max_price=${currentMaxVal}`);
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+    const fetchPlantasFiltrarMinyMax2 = async () => {
+        setLoading(true);
+        try {
+            const currentMinVal2 = rangeInputMin2.current.value;
+            const currentMaxVal2 = rangeInputMax2.current.value;
+            const response = await fetch(`http://127.0.0.1:8000/plantas-by-price-range/?min_price=${currentMinVal2}&max_price=${currentMaxVal2}`);
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleFiltrarMinyMax = () => {
+        fetchPlantasFiltrarMinyMax();
+    };
+    
+    const handleFiltrarMinyMax2 = () => {
+        fetchPlantasFiltrarMinyMax2();
+    };
 
 
 
@@ -132,6 +323,13 @@ function ComprarPlantas() {
             val2 = maxVal2 - priceGap2;
         }
         setMinVal2(val2);
+
+        // Agrega un retardo antes de activar el filtro
+        clearTimeout(filterTimeout);
+        const timeout = setTimeout(() => {
+            handleFiltrarMinyMax2();
+        }, 500); // 500 milisegundos de retardo, ajusta según tus necesidades
+        setFilterTimeout(timeout);
     };
 
     const handleMaxChange2 = (e) => {
@@ -140,6 +338,13 @@ function ComprarPlantas() {
             val2 = minVal2 + priceGap2;
         }
         setMaxVal2(val2);
+
+        // Agrega un retardo antes de activar el filtro
+        clearTimeout(filterTimeout);
+        const timeout = setTimeout(() => {
+            handleFiltrarMinyMax2();
+        }, 500); // 500 milisegundos de retardo, ajusta según tus necesidades
+        setFilterTimeout(timeout);
     };
     const handleMinChange = (e) => {
         let val = parseInt(e.target.value);
@@ -147,6 +352,13 @@ function ComprarPlantas() {
             val = maxVal - priceGap;
         }
         setMinVal(val);
+
+        // Agrega un retardo antes de activar el filtro
+        clearTimeout(filterTimeout);
+        const timeout = setTimeout(() => {
+            handleFiltrarMinyMax();
+        }, 500); // 500 milisegundos de retardo, ajusta según tus necesidades
+        setFilterTimeout(timeout);
     };
 
     const handleMaxChange = (e) => {
@@ -155,6 +367,12 @@ function ComprarPlantas() {
             val = minVal + priceGap;
         }
         setMaxVal(val);
+
+        clearTimeout(filterTimeout);
+        const timeout = setTimeout(() => {
+            handleFiltrarMinyMax();
+        }, 500); // 500 milisegundos de retardo, ajusta según tus necesidades
+        setFilterTimeout(timeout);
     };
 
 
@@ -162,6 +380,11 @@ function ComprarPlantas() {
         setSelectedPlanta(planta);
         setModalShow(true);
     };
+
+    const handleBorrarFiltros = () => {
+        // Recarga la página cuando se hace clic en el botón
+        window.location.reload();
+      };
 
     return (
         <div className="contenedor_compra_plantas">
@@ -186,12 +409,12 @@ function ComprarPlantas() {
                                             <div className="price-input">
                                                 <div className="field">
                                                     <span>Min S/.</span>
-                                                    <input type="number" className="input-min" value={minVal2} onChange={handleMinChange} />
+                                                    <input type="number" disabled className="input-min" value={minVal2} onChange={handleMinChange2} />
                                                 </div>
                                                 <div className="separator">-</div>
                                                 <div className="field">
                                                     <span>Max S/.</span>
-                                                    <input type="number" className="input-max" value={maxVal2} onChange={handleMaxChange} />
+                                                    <input type="number" disabled className="input-max" value={maxVal2} onChange={handleMaxChange2} />
                                                 </div>
                                             </div>
                                             <div className="slider">
@@ -201,58 +424,35 @@ function ComprarPlantas() {
                                                 <input type="range" className="range-min" min="0" max="500" value={minVal2} step="1" onChange={handleMinChange2} ref={rangeInputMin2} />
                                                 <input type="range" className="range-max" min="0" max="500" value={maxVal2} step="1" onChange={handleMaxChange2} ref={rangeInputMax2} />
                                             </div>
+
                                         </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="1">
                                         <Accordion.Header>Tipos Plantas</Accordion.Header>
                                         <Accordion.Body>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Echeveria</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Cactus de San Pedro</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Serpiente de la Madre</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Cactus Bola de Nieve</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Aloe Vera</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Crasas Haworthia</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Cactus Orejas de Conejo</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Rosa del Desierto</div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Cactus Barril </div>
-                                            </div>
-                                            <div className="contenedor_filtros_tipos_plantas_tipos">
-                                                <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                                <div className="nombre_tipo_planta">Cactus de Navidad</div>
-                                            </div>
+                                            
+                                            {plantastipos.map((plantastipo) => (
+                                                <div key={plantastipo.id}>
+                                                    <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                        <input
+                                                            id={plantastipo.id}
+                                                            className="checkbox_tipo_planta"
+                                                            type="checkbox"
+                                                            checked={tiposSeleccionados.includes(plantastipo.id)}
+                                                            onChange={() => handleCheckboxChange(plantastipo.id)}
+                                                        />
+                                                        <div className="nombre_tipo_planta">{plantastipo.nombre}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
+
                                         </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="2">
                                         <Accordion.Header>Borrar Filtros</Accordion.Header>
                                         <Accordion.Body>
                                             <div className="contenedor_filtros_borrar">
-                                                <button className="btn_borrar_filtros">
+                                                <button className="btn_borrar_filtros"  onClick={handleBorrarFiltros}>
                                                     <span className="shadow"></span>
                                                     <span className="edge"></span>
                                                     <span className="front text"> X
@@ -271,12 +471,12 @@ function ComprarPlantas() {
                                     <div className="price-input">
                                         <div className="field">
                                             <span>Min S/.</span>
-                                            <input type="number" className="input-min" value={minVal} onChange={handleMinChange} />
+                                            <input type="number" disabled className="input-min" value={minVal} onChange={handleMinChange} />
                                         </div>
                                         <div className="separator">-</div>
                                         <div className="field">
                                             <span>Max S/.</span>
-                                            <input type="number" className="input-max" value={maxVal} onChange={handleMaxChange} />
+                                            <input type="number" disabled className="input-max" value={maxVal} onChange={handleMaxChange} />
                                         </div>
                                     </div>
                                     <div className="slider">
@@ -290,59 +490,40 @@ function ComprarPlantas() {
 
                                 <div className="hr_personal"></div>
 
+                                {/* ?////// */}
+
                                 <div className="contenedor_filtros_tipos_plantas">
                                     <div className="contenedor_filtros_tipos_plantas_titulo">Tipos plantas</div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Echeveria</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Cactus de San Pedro</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Serpiente de la Madre</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Cactus Bola de Nieve</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Aloe Vera</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Crasas Haworthia</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Cactus Orejas de Conejo</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Rosa del Desierto</div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Cactus Barril </div>
-                                    </div>
-                                    <div className="contenedor_filtros_tipos_plantas_tipos">
-                                        <input className="checkbox_tipo_planta" type="checkbox"></input>
-                                        <div className="nombre_tipo_planta">Cactus de Navidad</div>
-                                    </div>
+
+                                    {plantastipos.map((plantastipo) => (
+                                        <div key={plantastipo.id}>
+                                            <div className="contenedor_filtros_tipos_plantas_tipos">
+                                                <input
+                                                    id={plantastipo.id}
+                                                    className="checkbox_tipo_planta"
+                                                    type="checkbox"
+                                                    checked={tiposSeleccionados.includes(plantastipo.id)}
+                                                    onChange={() => handleCheckboxChange(plantastipo.id)}
+                                                />
+                                                <div className="nombre_tipo_planta">{plantastipo.nombre}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+
+
                                 </div>
+
+
+                                {/* ?///// */}
 
                                 <div className="hr_personal"></div>
 
                                 <div className="contenedor_filtros_borrar">
                                     <div className="contenedor_filtros_borrar_seccion">Borrar Filtros</div>
-                                    <button className="btn_borrar_filtros">
+                                    <button className="btn_borrar_filtros" onClick={handleBorrarFiltros}>
                                         <span className="shadow"></span>
                                         <span className="edge"></span>
-                                        <span className="front text"> X
-                                        </span>
+                                        <span className="front text"> X </span>
                                     </button>
                                 </div>
                             </div>
@@ -351,6 +532,8 @@ function ComprarPlantas() {
                 </div>
 
                 <div className="contenedor_secciones">
+
+
                     <div className="contenedor_head_plantas_secciones">
                         <div className="content_icons_shop_plant_views">
                             <img className="views_plants_icons" alt="views_plants_icons" src={ic_cuadricula}></img>
@@ -358,41 +541,74 @@ function ComprarPlantas() {
                         </div>
                         <div className="content_icons_shop_plant_filter">
                             <DropdownButton style={{ background: 'transparent !important' }} id="dropdown-item-button" className="" title="Ordernar por">
-                                <Dropdown.ItemText>Ordernar por</Dropdown.ItemText>
-                                <Dropdown.Item as="button">Relevancia</Dropdown.Item>
-                                <Dropdown.Item as="button">Nombre de la A a la Z</Dropdown.Item>
-                                <Dropdown.Item as="button">Nombre de la Z a la A</Dropdown.Item>
-                                <Dropdown.Item as="button">Precio más bajo a más alto</Dropdown.Item>
-                                <Dropdown.Item as="button">Precio más alto a más bajo</Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorRelevancia}>
+                                    Relevancia
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorAtoZ}>
+                                    Nombre de la A a la Z
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorZtoA}>
+                                    Nombre de la Z a la A
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorPrecioMenosMas}>
+                                    Precio más bajo a más alto
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorPrecioMasMenos}>
+                                    Precio más alto a más bajo
+                                </Dropdown.Item>
                             </DropdownButton>
                         </div>
                     </div>
 
-                    <div className="contenedor_body_plantas_secciones">
-
-                        {plantas.map((planta) => (
-                            <div className="producto_planta" key={planta.id} onClick={() => handlePlantaClick(planta)}>
-                                <img className="imagen_producto" src={`${process.env.PUBLIC_URL}/${planta.imgplanta}`} alt={planta.nombre} />
-
-
-                                <div className="comprar_planta_cuadricula">
-                                    <h2>{planta.nombre}</h2>
-                                    <button className="btn_comprar_planta">Comprar</button>
+                    {loading &&
+                        <div className="container_loader">
+                            <div className="tree_arbol_loader">
+                                {[0, 1, 2, 3].map((x) => (
+                                    <div className="branch_loader" style={{ '--x': x }} key={x}>
+                                        {[0, 1, 2, 3].map((i) => (
+                                            <span style={{ '--i': i }} key={i}></span>
+                                        ))}
+                                    </div>
+                                ))}
+                                <div className="stem">
+                                    {[0, 1, 2, 3].map((i) => (
+                                        <span style={{ '--i': i }} key={i}></span>
+                                    ))}
                                 </div>
-                                <p>S/. {planta.precio}</p>
-                                <div className="botones_superior">
-                                    <Button className="botones_superior_btn btn_ojo_ic" variant="primary" onClick={() => handlePlantaClick(planta)}>
-                                        <img className="ic_ojo" src={ic_ojo} alt="Ver Detalles" />
-                                    </Button>
-                                    <Button className="botones_superior_btn btn_ojo_ic" variant="primary" onClick={() => handlePlantaClick(planta)}>
-                                        <img className="ic_ojo" src={ic_carrito_compras} alt="Agregar al Carrito" />
-                                    </Button>
-                                </div>
+                                <span className="shadow"></span>
                             </div>
-                        ))}
+                        </div>
+                    }
+
+                    {!loading && (
+
+                        <div className="contenedor_body_plantas_secciones">
+
+                            {plantas.map((planta) => (
+                                <div className="producto_planta" key={planta.id} onClick={() => handlePlantaClick(planta)}>
+                                    <img className="imagen_producto" src={`${process.env.PUBLIC_URL}/${planta.imgplanta}`} alt={planta.nombre} />
 
 
-                    </div>
+                                    <div className="comprar_planta_cuadricula">
+                                        <h2>{planta.nombre}</h2>
+                                        <button className="btn_comprar_planta">Comprar</button>
+                                    </div>
+                                    <p>S/. {planta.precio}</p>
+                                    <div className="botones_superior">
+                                        <Button className="botones_superior_btn btn_ojo_ic" variant="primary" onClick={() => handlePlantaClick(planta)}>
+                                            <img className="ic_ojo" src={ic_ojo} alt="Ver Detalles" />
+                                        </Button>
+                                        <Button className="botones_superior_btn btn_ojo_ic" variant="primary" onClick={() => handlePlantaClick(planta)}>
+                                            <img className="ic_ojo" src={ic_carrito_compras} alt="Agregar al Carrito" />
+                                        </Button>
+                                    </div>
+                                </div>
+                            ))}
+
+
+                        </div>
+
+                    )}
 
                     <MyVerticallyCenteredModal
                         show={modalShow}

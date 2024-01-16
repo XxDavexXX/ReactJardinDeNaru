@@ -498,8 +498,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .modal-description {
-  height: 650px !important;
-  margin: 20px 0 !important;
+  height: 100% !important;
+  /* margin: 20px 0 !important; */
   width: 50% !important;
   display: flex !important;
   flex-direction: column !important;
@@ -513,17 +513,73 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .modal-img-container img {
-  margin: 20px 0 !important;
-  width: 500px !important;
-  height: 650px !important;
+  /* margin: 20px 0 !important; */
+  /* width: 500px !important; */
+  height: 100% !important;
 }
 
-@media (min-width: 992px) {
+.modal-lg{
+  max-width: 50% !important;
+}
 
-  .modal-lg,
-  .modal-xl {
+@media (max-width: 1510px) {
+  .modal-lg{
     max-width: 70% !important;
   }
+}
+
+@media (max-width: 1080px) {
+  .modal-lg{
+    max-width: 90% !important;
+  }
+}
+
+@media (max-width: 825px) {
+  .modal-lg{
+    max-width: 95% !important;
+  }
+}
+
+@media (max-width: 775px) {
+  .modal-lg{
+    max-width: 95% !important;
+  }
+
+  .contenedor_img_desc_modal {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border: none !important;
+    overflow: auto;
+  }
+
+  .modal-img-container {
+    width: 100% !important;
+  }
+
+  .modal-img-container img {
+    height: 400px !important;
+  }
+
+  .modal-description {
+    height: 100% !important;
+    margin: 25px 0 10px 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+  }
+
+}
+
+.darle_radio_modal{
+  height: 100%!important;
+}
+
+.modal-body {
+  height: 480px;
 }
 
 .header_modal_ojo_planta {
@@ -655,6 +711,10 @@ input[type="range"]::-moz-range-thumb {
     justify-content: center;
   }
 
+  .container_loader{
+    margin-top: 100px;
+  }
+
 }
 
 @media (max-width: 550px) {
@@ -674,4 +734,84 @@ input[type="range"]::-moz-range-thumb {
     margin-bottom: 40px;
     width: 345px;
   }
+}
+
+
+/* Loader plantas  */
+
+.container_loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  top: -100px;
+}
+
+.tree_arbol_loader {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(30deg);
+  animation: treeAnimate 5s linear infinite;
+}
+
+@keyframes treeAnimate {
+  0% {
+    transform: rotateX(-20deg) rotateY(360deg);
+  }
+
+  100% {
+    transform: rotateX(-20deg) rotateY(0deg);
+  }
+}
+
+.tree_arbol_loader div {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: translateY(calc(25px * var(--x))) translateZ(0px);
+}
+
+.tree_arbol_loader div.branch_loader span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #69c069, #77dd77);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border-bottom: 5px solid #00000019;
+  transform-origin: bottom;
+  transform: rotateY(calc(90deg * var(--i))) rotateX(30deg) translateZ(28.5px);
+}
+
+.tree_arbol_loader div.stem span {
+  position: absolute;
+  top: 110px;
+ /* updated top value */
+  left: calc(50% - 7.5px);
+  width: 15px;
+  height: 50%;
+  background: linear-gradient(90deg, #bb4622, #df7214);
+  border-bottom: 5px solid #00000019;
+  transform-origin: bottom;
+  transform: rotateY(calc(90deg * var(--i))) translateZ(7.5px);
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  filter: blur(20px);
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) translateZ(-65px);
 }

@@ -1,8 +1,14 @@
 .accordion-button:not(.collapsed) {
     color: #000000 !important;
-    background-color: #ffffff !important;
+    background-color: #ffffffa9;
     border: none;
     box-shadow: none !important
+}
+
+.respuestas_acordion_preguntas_frecuentes{
+    background-color: #ffffffa9;
+    padding: 20px 30px;
+    border-top: 0.1px solid #0000006c;
 }
 
 .accordion-button:focus {
@@ -21,6 +27,10 @@
     font-size: 23px !important;
     font-family: a;
     padding: 35px 30px !important;
+}
+
+.color_acordio_preguntasfrecuentes{
+    background-color: #ffffffa9;
 }
 
 
