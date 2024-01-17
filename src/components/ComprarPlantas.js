@@ -95,6 +95,7 @@ function ComprarPlantas() {
     const [selectedPlanta, setSelectedPlanta] = useState(null);
 
     const [tiposSeleccionados, setTiposSeleccionados] = useState([]);
+    const [tiposSeleccionados2, setTiposSeleccionados2] = useState([]);
 
 
     const [plantastipos, setPlantasTipos] = useState([]);
@@ -102,6 +103,14 @@ function ComprarPlantas() {
     const [loading, setLoading] = useState(true);
 
     const [filterTimeout, setFilterTimeout] = useState(null);
+
+    // Guardando el valor de las varibble de orden 
+
+    const [ultimaOpcionSeleccionada, setUltimaOpcionSeleccionada] = useState(null);
+    const [ultimaOpcionSeleccionada2, setUltimaOpcionSeleccionada2] = useState(null);
+
+
+    // Registro completo sin filtros de las planta 
 
     useEffect(() => {
 
@@ -119,6 +128,8 @@ function ComprarPlantas() {
 
         fetchPlantasData();
     }, []);
+
+    // Registro sin filtros de los tipos de platnas para los checkbox 
     
     useEffect(() => {
 
@@ -137,9 +148,9 @@ function ComprarPlantas() {
         fetchPlantasTiposData();
     }, []);
 
-
     
-
+    // Iniciamos con el filtro de Checkbox osea tipo de plantas 
+    
     const handleCheckboxChange = (tipoId) => {
         setTiposSeleccionados((prevTipos) => {
             if (prevTipos.includes(tipoId)) {
@@ -156,9 +167,11 @@ function ComprarPlantas() {
     }, [tiposSeleccionados]);
 
     const construirURL = (tiposSeleccionados) => {
-        const baseURL = 'http://127.0.0.1:8000/plantas-by-tipo/';
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=${ultimaOpcionSeleccionada}&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
         const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
-        return `${baseURL}?${queryString}`;
+        return `${baseURL}&${queryString}`;
     };
 
     const cargarRegistros = async (url) => {
@@ -173,31 +186,67 @@ function ComprarPlantas() {
             setLoading(false);
         }
     };
-    
 
 
+            // movil 
 
-    const fetchPlantasOrdenadasMasMenos = async () => {
+    const handleCheckboxChange2 = (tipoId2) => {
+        setTiposSeleccionados2((prevTipos2) => {
+            if (prevTipos2.includes(tipoId2)) {
+                return prevTipos2.filter(id => id !== tipoId2);
+            } else {
+                return [...prevTipos2, tipoId2];
+            }
+        });
+    };
+
+    useEffect(() => {
+        const nuevaURL = construirURL2(tiposSeleccionados2);
+        cargarRegistros2(nuevaURL);
+    }, [tiposSeleccionados2]);
+
+    const construirURL2 = (tiposSeleccionados2) => {
+        const currentMinVal2 = rangeInputMin2.current.value;
+        const currentMaxVal2 = rangeInputMax2.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=${ultimaOpcionSeleccionada2}&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+        const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
+
+    const cargarRegistros2 = async (url) => {
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/plantas-order-mas-menos');
+            const response = await fetch(url);
             const data = await response.json();
             setPlantas(data);
         } catch (error) {
             console.error('Error fetching plantas:', error);
         } finally {
-            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+            setLoading(false);
         }
     };
+    
+    // Iniciamos con los filtros por orden 
 
-    const handleOrdenarPorPrecioMasMenos = () => {
-        fetchPlantasOrdenadasMasMenos();
+    // Ordenando por precio de menos a mas 
+
+    const construirURLOrdenPrecioMenosMas = (tiposSeleccionados) => {
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=precio_menos_mas&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
     };
 
     const fetchPlantasOrdenadasMenosMas = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/plantas-order-menos-mas');
+
+            setUltimaOpcionSeleccionada('precio_menos_mas');
+
+            const nuevaURL = construirURLOrdenPrecioMenosMas(tiposSeleccionados);
+
+            const response = await fetch(nuevaURL);
             const data = await response.json();
             setPlantas(data);
         } catch (error) {
@@ -211,10 +260,123 @@ function ComprarPlantas() {
         fetchPlantasOrdenadasMenosMas();
     };
 
+                    // Movil 
+
+                    const construirURLOrdenPrecioMenosMas2 = (tiposSeleccionados2) => {
+                        const currentMinVal2 = rangeInputMin2.current.value;
+                        const currentMaxVal2 = rangeInputMax2.current.value;
+                        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=precio_menos_mas&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+                        const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+                        return `${baseURL}&${queryString}`;
+                    };
+                
+                    const fetchPlantasOrdenadasMenosMas2 = async () => {
+                        setLoading(true);
+                        try {
+                
+                            setUltimaOpcionSeleccionada2('precio_menos_mas');
+                
+                            const nuevaURL = construirURLOrdenPrecioMenosMas2(tiposSeleccionados2);
+                
+                            const response = await fetch(nuevaURL);
+                            const data = await response.json();
+                            setPlantas(data);
+                        } catch (error) {
+                            console.error('Error fetching plantas:', error);
+                        } finally {
+                            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+                        }
+                    };
+                
+                    const handleOrdenarPorPrecioMenosMas2 = () => {
+                        fetchPlantasOrdenadasMenosMas2();
+                    };
+
+
+    // Ordenando por Precio de Mas a Menos 
+
+    const construirURLOrdenPrecioMasMenos = (tiposSeleccionados) => {
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=precio_mas_menos&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
+
+    const fetchPlantasOrdenadasMasMenos = async () => {
+        setLoading(true);
+        try {
+
+            setUltimaOpcionSeleccionada('precio_mas_menos');
+
+            const nuevaURL = construirURLOrdenPrecioMasMenos(tiposSeleccionados);
+
+            const response = await fetch(nuevaURL);
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+        }
+    };
+
+    const handleOrdenarPorPrecioMasMenos = () => {
+        fetchPlantasOrdenadasMasMenos();
+    };
+
+                // Movil 
+
+                const construirURLOrdenPrecioMasMenos2 = (tiposSeleccionados2) => {
+                    const currentMinVal2 = rangeInputMin2.current.value;
+                    const currentMaxVal2 = rangeInputMax2.current.value;
+                    const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=precio_mas_menos&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+                    const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+                    return `${baseURL}&${queryString}`;
+                };
+            
+                const fetchPlantasOrdenadasMasMenos2 = async () => {
+                    setLoading(true);
+                    try {
+            
+                        setUltimaOpcionSeleccionada2('precio_mas_menos');
+            
+                        const nuevaURL = construirURLOrdenPrecioMasMenos2(tiposSeleccionados2);
+            
+                        const response = await fetch(nuevaURL);
+                        const data = await response.json();
+                        setPlantas(data);
+                    } catch (error) {
+                        console.error('Error fetching plantas:', error);
+                    } finally {
+                        setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+                    }
+                };
+            
+                const handleOrdenarPorPrecioMasMenos2 = () => {
+                    fetchPlantasOrdenadasMasMenos2();
+                };
+
+    // Ordenando por Relevancia las plantas 
+
+    const construirURLOrdenPorRelevancia = (tiposSeleccionados) => {
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=random_id&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
+
+
     const fetchPlantasOrdenadasRelevancia = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/plantas-order-relevancia');
+            
+            setUltimaOpcionSeleccionada('random_id');
+            
+            const nuevaURL = construirURLOrdenPorRelevancia(tiposSeleccionados);
+
+            const response = await fetch(nuevaURL);
             const data = await response.json();
             setPlantas(data);
         } catch (error) {
@@ -228,10 +390,58 @@ function ComprarPlantas() {
         fetchPlantasOrdenadasRelevancia();
     };
 
+                // Movil 
+
+                const construirURLOrdenPorRelevancia2 = (tiposSeleccionados2) => {
+                    const currentMinVal2 = rangeInputMin2.current.value;
+                    const currentMaxVal2 = rangeInputMax2.current.value;
+                    const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=random_id&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+                    const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+                    return `${baseURL}&${queryString}`;
+                };
+            
+            
+                const fetchPlantasOrdenadasRelevancia2 = async () => {
+                    setLoading(true);
+                    try {
+                        
+                        setUltimaOpcionSeleccionada2('random_id');
+                        
+                        const nuevaURL = construirURLOrdenPorRelevancia2(tiposSeleccionados2);
+            
+                        const response = await fetch(nuevaURL);
+                        const data = await response.json();
+                        setPlantas(data);
+                    } catch (error) {
+                        console.error('Error fetching plantas:', error);
+                    } finally {
+                        setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+                    }
+                };
+            
+                const handleOrdenarPorRelevancia2 = () => {
+                    fetchPlantasOrdenadasRelevancia2();
+                };
+
+    // Ordenar por Alfabeto de la A a la Z 
+
+    const construirURLOrdenPorAlfabetoAtoZ = (tiposSeleccionados) => {
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=nombre_a_z&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
+
     const fetchPlantasOrdenadasAtoZ = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/plantas-order-a-z');
+
+            setUltimaOpcionSeleccionada('nombre_a_z');
+
+            const nuevaURL = construirURLOrdenPorAlfabetoAtoZ(tiposSeleccionados);
+
+            const response = await fetch(nuevaURL);
             const data = await response.json();
             setPlantas(data);
         } catch (error) {
@@ -245,10 +455,59 @@ function ComprarPlantas() {
         fetchPlantasOrdenadasAtoZ();
     };
 
+                // Movil 
+
+                const construirURLOrdenPorAlfabetoAtoZ2 = (tiposSeleccionados2) => {
+                    const currentMinVal2 = rangeInputMin2.current.value;
+                    const currentMaxVal2 = rangeInputMax2.current.value;
+                    const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=nombre_a_z&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+                    const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+                    return `${baseURL}&${queryString}`;
+                };
+            
+                const fetchPlantasOrdenadasAtoZ2 = async () => {
+                    setLoading(true);
+                    try {
+            
+                        setUltimaOpcionSeleccionada2('nombre_a_z');
+            
+                        const nuevaURL = construirURLOrdenPorAlfabetoAtoZ2(tiposSeleccionados2);
+            
+                        const response = await fetch(nuevaURL);
+                        const data = await response.json();
+                        setPlantas(data);
+                    } catch (error) {
+                        console.error('Error fetching plantas:', error);
+                    } finally {
+                        setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+                    }
+                };
+            
+                const handleOrdenarPorAtoZ2 = () => {
+                    fetchPlantasOrdenadasAtoZ2();
+                };
+
+
+
+     // Ordenar por Alfabeto de la Z a la A
+
+     const construirURLOrdenPorAlfabetoZtoA = (tiposSeleccionados) => {
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=nombre_z_a&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
+
     const fetchPlantasOrdenadasZtoA = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/plantas-order-z-a');
+
+            setUltimaOpcionSeleccionada('nombre_z_a');
+
+            const nuevaURL = construirURLOrdenPorAlfabetoZtoA(tiposSeleccionados);
+
+            const response = await fetch(nuevaURL);
             const data = await response.json();
             setPlantas(data);
         } catch (error) {
@@ -262,28 +521,56 @@ function ComprarPlantas() {
         fetchPlantasOrdenadasZtoA();
     };
 
+                    // Movil 
+
+                    const construirURLOrdenPorAlfabetoZtoA2 = (tiposSeleccionados2) => {
+                        const currentMinVal2 = rangeInputMin2.current.value;
+                        const currentMaxVal2 = rangeInputMax2.current.value;
+                        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=nombre_z_a&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+                        const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+                        return `${baseURL}&${queryString}`;
+                    };
+                
+                    const fetchPlantasOrdenadasZtoA2 = async () => {
+                        setLoading(true);
+                        try {
+                
+                            setUltimaOpcionSeleccionada2('nombre_z_a');
+                
+                            const nuevaURL = construirURLOrdenPorAlfabetoZtoA2(tiposSeleccionados2);
+                
+                            const response = await fetch(nuevaURL);
+                            const data = await response.json();
+                            setPlantas(data);
+                        } catch (error) {
+                            console.error('Error fetching plantas:', error);
+                        } finally {
+                            setLoading(false); // Desactiva el estado de carga, independientemente del resultado
+                        }
+                    };
+                
+                    const handleOrdenarPorZtoA2 = () => {
+                        fetchPlantasOrdenadasZtoA2();
+                    };
+
+    // Ahora empezamos a filtrar pero por rango de precios para PC
+
+    const construirURLFiltrarMinyMax = (tiposSeleccionados) => {
+        const currentMinVal = rangeInputMin.current.value;
+        const currentMaxVal = rangeInputMax.current.value;
+
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=${ultimaOpcionSeleccionada}&min_price=${currentMinVal}&max_price=${currentMaxVal}`;
+        const queryString = tiposSeleccionados.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
 
     const fetchPlantasFiltrarMinyMax = async () => {
         setLoading(true);
         try {
-            const currentMinVal = rangeInputMin.current.value;
-            const currentMaxVal = rangeInputMax.current.value;
-            const response = await fetch(`http://127.0.0.1:8000/plantas-by-price-range/?min_price=${currentMinVal}&max_price=${currentMaxVal}`);
-            const data = await response.json();
-            setPlantas(data);
-        } catch (error) {
-            console.error('Error fetching plantas:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-    
-    const fetchPlantasFiltrarMinyMax2 = async () => {
-        setLoading(true);
-        try {
-            const currentMinVal2 = rangeInputMin2.current.value;
-            const currentMaxVal2 = rangeInputMax2.current.value;
-            const response = await fetch(`http://127.0.0.1:8000/plantas-by-price-range/?min_price=${currentMinVal2}&max_price=${currentMaxVal2}`);
+
+            const nuevaURL = construirURLFiltrarMinyMax(tiposSeleccionados);
+
+            const response = await fetch(nuevaURL);
             const data = await response.json();
             setPlantas(data);
         } catch (error) {
@@ -293,15 +580,44 @@ function ComprarPlantas() {
         }
     };
 
+
     const handleFiltrarMinyMax = () => {
         fetchPlantasFiltrarMinyMax();
     };
+
+    // Ahora empezamos a filtrar pero por rango de precios para Movile
+
+    const construirURLFiltrarMinyMax2 = (tiposSeleccionados2) => {
+        const currentMinVal2 = rangeInputMin2.current.value;
+        const currentMaxVal2 = rangeInputMax2.current.value;
+
+        const baseURL = `http://127.0.0.1:8000/plantas-by-filters/?ordering=${ultimaOpcionSeleccionada2}&min_price=${currentMinVal2}&max_price=${currentMaxVal2}`;
+        const queryString = tiposSeleccionados2.map(id => `tipo_planta_id=${id}`).join('&');
+        return `${baseURL}&${queryString}`;
+    };
+
+    
+    const fetchPlantasFiltrarMinyMax2 = async () => {
+        setLoading(true);
+        try {
+            const nuevaURL = construirURLFiltrarMinyMax2(tiposSeleccionados2);
+
+            const response = await fetch(nuevaURL);
+            const data = await response.json();
+            setPlantas(data);
+        } catch (error) {
+            console.error('Error fetching plantas:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     
     const handleFiltrarMinyMax2 = () => {
         fetchPlantasFiltrarMinyMax2();
     };
 
-
+    // Logica para que se establescan los valores del Range Input 
 
     useEffect(() => {
         range.current.style.left = ((minVal / rangeInputMin.current.max) * 100) + "%";
@@ -375,11 +691,17 @@ function ComprarPlantas() {
         setFilterTimeout(timeout);
     };
 
+    // Aca recien termina la logica de establecer Valores del range Input 
+
+    // Mostrar el modal 
+
 
     const handlePlantaClick = (planta) => {
         setSelectedPlanta(planta);
         setModalShow(true);
     };
+
+    // Borrar los filtros, en reaslidad solo estoy reiniciando la pagina 
 
     const handleBorrarFiltros = () => {
         // Recarga la página cuando se hace clic en el botón
@@ -409,12 +731,12 @@ function ComprarPlantas() {
                                             <div className="price-input">
                                                 <div className="field">
                                                     <span>Min S/.</span>
-                                                    <input type="number" disabled className="input-min" value={minVal2} onChange={handleMinChange2} />
+                                                    <input type="number" disabled className="input-min" value={minVal2} onChange={handleMinChange} />
                                                 </div>
                                                 <div className="separator">-</div>
                                                 <div className="field">
                                                     <span>Max S/.</span>
-                                                    <input type="number" disabled className="input-max" value={maxVal2} onChange={handleMaxChange2} />
+                                                    <input type="number" disabled className="input-max" value={maxVal2} onChange={handleMaxChange} />
                                                 </div>
                                             </div>
                                             <div className="slider">
@@ -438,8 +760,8 @@ function ComprarPlantas() {
                                                             id={plantastipo.id}
                                                             className="checkbox_tipo_planta"
                                                             type="checkbox"
-                                                            checked={tiposSeleccionados.includes(plantastipo.id)}
-                                                            onChange={() => handleCheckboxChange(plantastipo.id)}
+                                                            checked={tiposSeleccionados2.includes(plantastipo.id)}
+                                                            onChange={() => handleCheckboxChange2(plantastipo.id)}
                                                         />
                                                         <div className="nombre_tipo_planta">{plantastipo.nombre}</div>
                                                     </div>
@@ -539,8 +861,10 @@ function ComprarPlantas() {
                             <img className="views_plants_icons" alt="views_plants_icons" src={ic_cuadricula}></img>
                             <img className="views_plants_icons  icon2_detail_view" alt="icon2_detail_view" src={ic_menu_lateral}></img>
                         </div>
-                        <div className="content_icons_shop_plant_filter">
-                            <DropdownButton style={{ background: 'transparent !important' }} id="dropdown-item-button" className="" title="Ordernar por">
+
+                        <div className="content_icons_shop_plant_filter parte_pc_ordenar_cp">
+                            <DropdownButton style={{ background: 'transparent !important' }} id="dropdown-item-button" className="" 
+                            title="Ordernar por">
                                 <Dropdown.Item as="button" onClick={handleOrdenarPorRelevancia}>
                                     Relevancia
                                 </Dropdown.Item>
@@ -554,6 +878,27 @@ function ComprarPlantas() {
                                     Precio más bajo a más alto
                                 </Dropdown.Item>
                                 <Dropdown.Item as="button" onClick={handleOrdenarPorPrecioMasMenos}>
+                                    Precio más alto a más bajo
+                                </Dropdown.Item>
+                            </DropdownButton>
+                        </div>
+                        
+                        <div className="content_icons_shop_plant_filter parte_movil_ordenar_cp">
+                            <DropdownButton style={{ background: 'transparent !important' }} id="dropdown-item-button" className="" 
+                            title="Ordernar por">
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorRelevancia2}>
+                                    Relevancia
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorAtoZ2}>
+                                    Nombre de la A a la Z
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorZtoA2}>
+                                    Nombre de la Z a la A
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorPrecioMenosMas2}>
+                                    Precio más bajo a más alto
+                                </Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={handleOrdenarPorPrecioMasMenos2}>
                                     Precio más alto a más bajo
                                 </Dropdown.Item>
                             </DropdownButton>

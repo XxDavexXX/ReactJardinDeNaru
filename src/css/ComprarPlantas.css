@@ -659,7 +659,20 @@ input[type="range"]::-moz-range-thumb {
 
 }
 
+.parte_movil_ordenar_cp{
+  display: none;
+}
+
 @media (max-width: 1490px) {
+
+  .parte_movil_ordenar_cp{
+    display: flex;
+  }
+
+  .parte_pc_ordenar_cp{
+    display: none;
+  }
+
   .contenedor_filtros_secciones {
     background-color: #d4f0d5;
     flex-direction: column;
